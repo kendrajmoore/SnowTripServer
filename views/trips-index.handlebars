@@ -1,0 +1,14 @@
+<h1>Trips</h1>
+
+<a href="/trips/new">New Trip</a>
+<br>
+
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+    {{#each trips}}
+      <a href="/trips/{{this._id}}"><h3>{{this.departsOn}}</h3></a>
+      <h3>{{this.returnsOn}}</h3>
+      <hr>
+    {{/each}}
+  </div>
+</div>

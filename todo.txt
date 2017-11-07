@@ -1,0 +1,28 @@
+Respond to HTMl
+- trips#new DONE
+- trips#edit DONE
+- trips#create DONE
+- #index DONE
+- #show DONE
+- #update DONE
+- #delete DONE
+
+respond to JSON (use postman! :D)
+- #index DONE
+- #show
+- trips#create
+- #update
+- #delete
+
+add date picker to trips-form
+
+
+Style trips-show.hbs - render dates in english
+
+rename project: snowride-server
+
+
+
+
+
+DONE fix navbar

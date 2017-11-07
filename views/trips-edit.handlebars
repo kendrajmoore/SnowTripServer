@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="col-sm-6 col-sm-offset-3">
+    <legend>Edit Trip</legend>
+    <form method="POST" action="/trips/{{trip._id}}?_method=PUT">
+      {{> trips-form }}
+    </form>
+
+    <form method="POST" action="/trips/{{trip._id}}?_method=DELETE">
+        <button type="submit" class="btn btn-danger">Delete</button>
+    </form>
+  </div>
+</div>
