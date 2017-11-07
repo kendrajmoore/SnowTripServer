@@ -2,8 +2,8 @@ const mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
 const TripSchema = new Schema({
-    departsOn      : Date,
-    returnsOn      : Date,
+    departsOn      : { type:Date, required: true },
+    returnsOn      : { type:Date, required: true },
     returnTrip     : { type: Schema.Types.ObjectId, ref: "Trip"}
 });
 

@@ -1,16 +1,15 @@
 <div class="form-group">
   <label for="Departure Date">Departure Date</label><br>
-  <input class="form-control" type=DATE  name="departsOn" value="{{trip.departsOn}}"/>
+  <input class="form-control" type=DATE  name="departsOn" value="{{formatTime trip.departsOn "YYYY-MM-DD"}}"/>
 </div>
-
 
 <div class="form-group">
   <label for="returnDate">Return Date</label><br>
-  <input class="form-control" type=DATE  name="returnsOn" value="{{trip.returnsOn}}" />
+  <input class="form-control" type=DATE  name="returnsOn" value="{{formatTime trip.returnsOn "YYYY-MM-DD"}}" />
 </div>
 <!-- BUTTON -->
 <p>
     <button type="submit" class="btn btn-primary">Save Trip</button>
-    <button onclick="location.href='/'" class="btn btn-primary">
-     Cancel</button>
+    <a href="/" class="btn btn-primary">
+     Cancel</a>
 </p>

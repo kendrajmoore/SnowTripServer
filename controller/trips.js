@@ -21,40 +21,62 @@ module.exports = function(app) {
       res.render('trips-new', {});
     })
 
+    //CREATE
     app.post('/trips', function (req, res) {
-      Trip.create(req.body, function(err, trips) {
-
+      console.log(req.body)
+      Trip.create(req.body, function(err, trip) {
         if (req.header('Content-Type') == 'application/json') {
-          return res.send({ trips: trips }); //=> RETURN JSON
+          if (err) {
+            console.log(err)
+            return res.status(400).send({ message: "There was a problem creating your trip."})
+          }
+          return res.send({ trip: trip }); //=> RETURN JSON
         } else {
-          return res.redirect('/trips/' + this._id);
+          if (err) {
+            console.log(err)
+            return res.redirect('/trips/new')
+          }
+          return res.redirect('/trips/' + trip._id);
         }
       })
     })
 
+    // SHOW
     app.get('/trips/:id', function (req, res) {
-      Trip.findById(req.params.id).exec(function (err, trips) {
-        res.render('trips-show', {trips: trips});
+      Trip.findById(req.params.id).exec(function (err, trip) {
+        if (req.header('Content-Type') == 'application/json') {
+          return res.send({ trip: trip }); //=> RETURN JSON
+        } else {
+          return res.render('trips-show', {trip: trip});
+        }
       })
     })
 
     //UPDATE
     app.put('/trips/:id', function (req, res) {
-        console.log(req.body)
-      Trip.findByIdAndUpdate(req.params.id,  req.body, function(err, trips) {
-        res.redirect('/trips/' + this._id);
+      Trip.findByIdAndUpdate(req.params.id,  req.body, function(err, trip) {
+        res.redirect('/trips/' + trip._id);
       })
     })
 
+    // EDIT
     app.get('/trips/:id/edit', function (req, res) {
-      Trip.findById(req.params.id, function(err, trips) {
-        res.render('trips-edit', {trips: trips});
+      Trip.findById(req.params.id, function(err, trip) {
+        res.render('trips-edit', {trip: trip});
       })
     })
 
+    // DELETE
     app.delete('/trips/:id', function (req, res) {
+      console.log('hello')
       Trip.findByIdAndRemove(req.params.id, function(err) {
-        res.redirect('/');
+        if (err) { return console.log(err) }
+        console.log('hello 2')
+        if (req.header('Content-Type') == 'application/json') {
+          return res.send({"message": "Trip deleted sucessfully"}).status(200) //=> RETURN JSON
+        } else {
+          return res.redirect('/');
+        }
       })
     })
 

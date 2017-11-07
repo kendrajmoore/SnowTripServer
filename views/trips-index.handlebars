@@ -6,8 +6,7 @@
 <div class="row">
   <div class="col-sm-6 col-sm-offset-3">
     {{#each trips}}
-    <a href="/trips/{{this._id}}"><h3>{{this.departsOn}}</h3></a>
-    <a href="/trips/{{this._id}}"><h3>{{this.returnsOn}}</h3></a>
+    <a href="/trips/{{this._id}}"><h3>{{formatTime this.departsOn "dddd, MMM D"}} - {{formatTime this.returnsOn "dddd, MMM D"}}</h3></a>
       <hr>
     {{/each}}
   </div>
