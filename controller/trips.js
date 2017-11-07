@@ -12,7 +12,7 @@ module.exports = function(app) {
     // WEB INDEX
     app.get('/', function (req, res) {
       Trip.find(function(err, trips) {
-        res.render('trips-index', {trips: trip});
+        res.render('trips-index', {trips: trips});
       })
     })
 
@@ -22,36 +22,36 @@ module.exports = function(app) {
     })
 
     app.post('/trips', function (req, res) {
-      Trip.create(req.body, function(err, trip) {
+      Trip.create(req.body, function(err, trips) {
 
         if (req.header('Content-Type') == 'application/json') {
-          return res.send({ trip: trip }); //=> RETURN JSON
+          return res.send({ trips: trips }); //=> RETURN JSON
         } else {
-          return res.redirect('/trips/' + trip._id);
+          return res.redirect('/trips/' + this._id);
         }
       })
     })
 
     app.get('/trips/:id', function (req, res) {
-      Trip.findById(req.params.id).exec(function (err, trip) {
-        res.render('trips-show', {trip: trip});
+      Trip.findById(req.params.id).exec(function (err, trips) {
+        res.render('trips-show', {trips: trips});
       })
     })
 
     //UPDATE
     app.put('/trips/:id', function (req, res) {
         console.log(req.body)
-      Trip.findByIdAndUpdate(req.params.id,  req.body, function(err, trip) {
-        res.redirect('/trips/' + trip._id);
+      Trip.findByIdAndUpdate(req.params.id,  req.body, function(err, trips) {
+        res.redirect('/trips/' + this._id);
       })
     })
 
     app.get('/trips/:id/edit', function (req, res) {
-      Trip.findById(req.params.id, function(err, trip) {
-        res.render('trips-edit', {trip: trip});
+      Trip.findById(req.params.id, function(err, trips) {
+        res.render('trips-edit', {trips: trips});
       })
     })
-    
+
     app.delete('/trips/:id', function (req, res) {
       Trip.findByIdAndRemove(req.params.id, function(err) {
         res.redirect('/');

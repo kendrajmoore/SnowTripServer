@@ -1,9 +1,13 @@
 
 const express = require('express')
 const app = express()
+const mongoose = require('mongoose');
+const handlebars = require('handlebars');
+handlebars.registerHelper('dateformat', require('helper-dateformat'));
 const exphbs  = require('express-handlebars');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
+
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
 
@@ -12,7 +16,7 @@ app.set('view engine', 'handlebars');
 
 require('./controller/trips.js')(app);
 
-const mongoose = require('mongoose');
+
 
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/backSnow');
 

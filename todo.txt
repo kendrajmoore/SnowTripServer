@@ -19,7 +19,7 @@ add date picker to trips-form
 
 Style trips-show.hbs - render dates in english
 
-rename project: snowride-server
+rename project: snowride-server-Done
 
 
 
