@@ -1,23 +1,27 @@
 BUGS
 - Decrementing the date by one day when editing trips
 
+GITHUB
+-Conflict need to merge - DONE
+
+Phone
+
+-Needs to remove dashes on backend
+
 respond to JSON (use postman! :D)
 - #index DONE
 - #show DONE
 - trips#create DONE
-- #update
+- #update- DONE
 - #delete-DONE
 
-Error handling
-- INDEX
-- SHOW
-- create DONE
-- update
-- delete
 
 order trips on departsOn
 
 ERD- departsInThe for the actual time
+
+Connect mongoose and mongoDB to ios app
+Flask server - CRUD one resource - trips
 
 Add Users -first, last, email, phone, password
 
@@ -44,3 +48,17 @@ Respond to HTMl
 - #show DONE
 - #update DONE
 - #delete DONE
+
+respond to JSON (use postman! :D)
+- #index DONE
+- #show DONE
+- trips#create DONE
+- #update- DONE
+- #delete-DONE
+
+Error handling
+- INDEX - DONE
+- SHOW -DONE
+- create DONE
+- update - DONE
+- delete - DONE

@@ -5,14 +5,18 @@ module.exports = function(app) {
     // API INDEX ROUTE
     app.get('/trips', function (req, res) {
       Trip.find(function(err, trips) {
-        res.send({trips: trips});
+        if (err) {
+          console.log(err)
+        }
+          res.send({trips: trips});
       })
     })
 
     // WEB INDEX
     app.get('/', function (req, res) {
       Trip.find(function(err, trips) {
-        res.render('trips-index', {trips: trips});
+        if (err) { return console.log(err) }
+         res.render('trips-index', {trips: trips});
       })
     })
 
@@ -55,6 +59,7 @@ module.exports = function(app) {
     //UPDATE
     app.put('/trips/:id', function (req, res) {
       Trip.findByIdAndUpdate(req.params.id,  req.body, function(err, trip) {
+        if (err) { return console.log(err) }
         res.redirect('/trips/' + trip._id);
       })
     })
@@ -62,6 +67,7 @@ module.exports = function(app) {
     // EDIT
     app.get('/trips/:id/edit', function (req, res) {
       Trip.findById(req.params.id, function(err, trip) {
+        if (err) { return console.log(err) }
         res.render('trips-edit', {trip: trip});
       })
     })
