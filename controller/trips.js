@@ -27,7 +27,9 @@ module.exports = function(app) {
 
     //CREATE
     app.post('/trips', function (req, res) {
-      console.log(req.body)
+      req.body.departsOn = new Date(req.body.departsOn + " PST")
+      req.body.returnsOn = new Date(req.body.returnsOn + " PST")
+
       Trip.create(req.body, function(err, trip) {
         if (req.header('Content-Type') == 'application/json') {
           if (err) {
@@ -58,6 +60,9 @@ module.exports = function(app) {
 
     //UPDATE
     app.put('/trips/:id', function (req, res) {
+      req.body.departsOn = new Date(req.body.departsOn + " PST")
+      req.body.returnsOn = new Date(req.body.returnsOn + " PST")
+      
       Trip.findByIdAndUpdate(req.params.id,  req.body, function(err, trip) {
         if (err) { return console.log(err) }
         res.redirect('/trips/' + trip._id);

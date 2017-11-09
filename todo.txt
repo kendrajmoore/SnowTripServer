@@ -10,14 +10,6 @@ Phone
 
 -Needs to remove dashes on backend
 
-respond to JSON (use postman! :D)
-- #index DONE
-- #show DONE
-- trips#create DONE
-- #update- DONE
-- #delete-DONE
-
-
 order trips on departsOn
 
 ERD- departsInThe for the actual time
@@ -34,6 +26,7 @@ Encrypt passwords
 SOMEDAY
 
 make separate return trips.
+make it work no matter what timezone they are in...
 
 
 add date picker to trips-form- DONE
@@ -64,3 +57,10 @@ Error handling
 - create DONE
 - update - DONE
 - delete - DONE
+
+respond to JSON (use postman! :D)
+- #index DONE
+- #show DONE
+- trips#create DONE
+- #update- DONE
+- #delete-DONE

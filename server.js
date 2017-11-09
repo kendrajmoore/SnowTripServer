@@ -7,7 +7,10 @@ const jwt = require('jsonwebtoken');
 
 // HANDLEBARS
 const exphbs  = require('express-handlebars');
-const moment = require('moment')
+const moment = require('moment');
+// const moment = require('moment-timezone');
+// moment().tz("America/Los_Angeles").format();
+// moment.tz.guess();
 const hbs = exphbs.create({
     // Specify helpers which are only registered on this instance.
     helpers: {
