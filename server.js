@@ -1,8 +1,9 @@
-
+require("dotenv").config();
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
+const jwt = require('jsonwebtoken');
 
 // HANDLEBARS
 const exphbs  = require('express-handlebars');

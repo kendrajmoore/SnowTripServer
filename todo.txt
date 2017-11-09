@@ -6,6 +6,8 @@ GITHUB
 
 Phone
 
+-Put on Heroku without user resource
+
 -Needs to remove dashes on backend
 
 respond to JSON (use postman! :D)

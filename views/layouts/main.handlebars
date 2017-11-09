@@ -16,6 +16,7 @@
         </a>
       </div>
       <div class="pull-right">
+        {{#unless currentUser}}
             <div class="pull-right">
                 <a href="/logout" class="btn btn-default navbar-btn">Logout</a>
             </div>
@@ -24,6 +25,7 @@
             </div>
             <div class="pull-right">
                 <a href="/sign-up" class="btn btn-default navbar-btn">Sign Up</a>
+                {{/unless}}
             </div>
     </div>
   </nav>
