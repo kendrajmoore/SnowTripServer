@@ -28,7 +28,7 @@ app.set('view engine', 'handlebars');
 // MONGOOSE
 const mongoose = require('mongoose');
 mongoose.Promise = global.Promise
-mongoose.connect('mongodb://localhost/backSnow', { useMongoClient: true })
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/backSnow', { useMongoClient: true })
 mongoose.connection.on('error', console.error.bind(console, 'MongoDB connection Error:'))
 mongoose.set('debug', true)
 
@@ -41,6 +41,6 @@ app.use(methodOverride('_method'));
 //ROUTES
 require('./controller/trips.js')(app);
 
-app.listen(3000, function () {
+app.listen(process.env.PORT || 3000, function () {
   console.log('Portfolio App listening on port 3000!')
 })
