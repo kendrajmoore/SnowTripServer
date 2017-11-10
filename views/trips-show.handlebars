@@ -1,7 +1,9 @@
 <a href="/">Back to Home</a>
 <div class="row">
   <div class="col-sm-6 col-sm-offset-3">
-    {{formatTime trip.departsOn "dddd, MMM D"}} - {{formatTime trip.returnsOn "dddd, MMM D"}}
+    <p>{{formatTime trip.departsOn "dddd, MMM D"}} - {{formatTime trip.returnsOn "dddd, MMM D"}}</p>
+    <p>{{trip.departsInThe}}</p>
+    <p>{{trip.returnsInThe}}</p>
     <a href="/trips/{{trip._id}}/edit">Edit</a>
   </div>
 </div>

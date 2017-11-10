@@ -1,21 +1,8 @@
 BUGS
-- Decrementing the date by one day when editing trips
 
-GITHUB
--Conflict need to merge - DONE
-
-Phone
-
--Put on Heroku without user resource
-
--Needs to remove dashes on backend
-
-order trips on departsOn
-
-ERD- departsInThe for the actual time
-
-Connect mongoose and mongoDB to ios app
-Flask server - CRUD one resource - trips
+Origin & destination in trips
+Make return optional
+Make two trips - and link them 
 
 Add Users -first, last, email, phone, password
 
@@ -24,6 +11,9 @@ Associate trips
 Encrypt passwords
 
 SOMEDAY
+
+Phone
+- Needs to remove dashes on backend
 
 make separate return trips.
 make it work no matter what timezone they are in...
@@ -64,3 +54,18 @@ respond to JSON (use postman! :D)
 - trips#create DONE
 - #update- DONE
 - #delete-DONE
+
+-Put on Heroku without user resource DONE
+
+
+- Decrementing the date by one day when editing trips DONE
+
+
+Trips#index
+  order trips on departsOn DONE
+  remove trips older than today DONE
+
+
+ERD - departsInThe for the actual time DONE
+
+Flask server - CRUD one resource - trips DONE

@@ -1,13 +1,16 @@
-<h1>Trips</h1>
-
 <a href="/trips/new">New Trip</a>
-<br>
 
 <div class="row">
   <div class="col-sm-6 col-sm-offset-3">
-    {{#each trips}}
-    <a href="/trips/{{this._id}}"><h3>{{formatTime trip.departsOn "dddd, MMM D"}} - {{formatTime trip.returnsOn "dddd, MMM D"}}</h3></a>
-      <hr>
-    {{/each}}
+    <div class="list-group">
+      {{#each trips}}
+        <a href="/trips/{{this._id}}" class="list-group-item">
+          San Francisco => Tahoe
+          <h4>{{formatTime this.departsOn "dddd, MMM D"}} - {{this.departsInThe}}</h4>
+          Tahoe => San Francisco
+          <h4>{{formatTime this.returnsOn "dddd, MMM D"}} - {{this.returnsInThe}}</h4>
+        </a>
+      {{/each}}
+    </div>
   </div>
 </div>

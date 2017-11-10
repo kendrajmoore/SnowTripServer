@@ -14,7 +14,8 @@ module.exports = function(app) {
 
     // WEB INDEX
     app.get('/', function (req, res) {
-      Trip.find(function(err, trips) {
+      const now = new Date();
+      Trip.find({ departsOn: { $gt: now } }).sort('departsOn desc').exec(function(err, trips) {
         if (err) { return console.log(err) }
          res.render('trips-index', {trips: trips});
       })
@@ -22,7 +23,7 @@ module.exports = function(app) {
 
     // NEW
     app.get('/trips/new', function (req, res) {
-      res.render('trips-new', {});
+      res.render('trips-new', { timesOfDay: Trip.timesOfDay() });
     })
 
     //CREATE
@@ -62,7 +63,7 @@ module.exports = function(app) {
     app.put('/trips/:id', function (req, res) {
       req.body.departsOn = new Date(req.body.departsOn + " PST")
       req.body.returnsOn = new Date(req.body.returnsOn + " PST")
-      
+
       Trip.findByIdAndUpdate(req.params.id,  req.body, function(err, trip) {
         if (err) { return console.log(err) }
         res.redirect('/trips/' + trip._id);
@@ -73,7 +74,7 @@ module.exports = function(app) {
     app.get('/trips/:id/edit', function (req, res) {
       Trip.findById(req.params.id, function(err, trip) {
         if (err) { return console.log(err) }
-        res.render('trips-edit', {trip: trip});
+        res.render('trips-edit', { trip: trip, timesOfDay: Trip.timesOfDay() });
       })
     })
 

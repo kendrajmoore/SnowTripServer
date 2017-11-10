@@ -15,6 +15,8 @@ const hbs = exphbs.create({
     // Specify helpers which are only registered on this instance.
     helpers: {
         formatTime: function (date, format) {
+          console.log(date)
+          console.log(format)
             var mmnt = moment(date);
             return mmnt.format(format);
         }
