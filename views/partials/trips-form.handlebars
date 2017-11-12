@@ -31,6 +31,9 @@
 </div>
 
 <div class="form-group">
+  <form id="myform">
+    <label for="check1">Return</label>
+   <input id="check1" type="checkbox">
   <label for="returnsOn">Return Date</label><br>
   <input class="form-control" type=DATE  name="returnsOn" value="{{formatTime trip.returnsOn "YYYY-MM-DD"}}" />
 </div>
@@ -50,3 +53,11 @@
     <a href="/" class="btn btn-primary">
      Cancel</a>
 </p>
+<script>
+$('#myform').on('change', ':checkbox', function () {
+    if ($(this).is(':checked')) {
+        // console.log($(this).val() + ' is now checked
+    } else {
+        console.log($(this).val() + ' is now unchecked');
+    }
+});</script>

@@ -1,69 +1,96 @@
-// 
-//
-// const jwt = require('jsonwebtoken');
-// const User = require('../models/user.js');
-//
-//
-// module.exports = (app) => {
-//
-//   // SIGN UP FORM
-//   // SIGN UP POST
-//   app.get('/sign-up', function(req, res, next) {
-//     console.log('Sign up!!!!')
-//     res.render('sign-up');
-//   });
-//
-//   app.post('/sign-up', function(req, res, next) {
-//     // Create User and JWT
-//     const user = new User(req.body);
-//     console.log(user)
-//
-//     user.save().then((user) => {
-//       const token = jwt.sign({ _id: user._id }, process.env.SECRET, { expiresIn: "60 days" });
-//       res.cookie('nToken', token, { maxAge: 900000, httpOnly: true });
-//       console.log(req.cookies)
-//       res.redirect('/');
-//     }).catch((err) => {
-//       console.log(err.message);
-//     });
-//
-//     // user.save(function (err) {
-//     //   if (err) { return res.status(400).send({ err: err }) }
-//     //
-//     //   const token = jwt.sign({ _id: user._id }, process.env.SECRET, { expiresIn: "60 days" });
-//     //   res.cookie('nToken', token, { maxAge: 900000, httpOnly: true });
-//     //   console.log(req.cookies)
-//     //   res.redirect('/');
-//     // })
-//   });
-//
-//
-//   // LOGIN FORM
-//   app.get('/login', function(req, res, next) {
-//     res.render('login');
-//   });
-//
-//   app.post('/login', function(req, res, next) {
-//     User.findOne({ email: req.body.email }, "+password", function (err, user) {
-//       if (!user) { return res.status(401).send({ message: 'Wrong email or password' }) };
-//       user.comparePassword(req.body.password, function (err, isMatch) {
-//         if (!isMatch) {
-//           return res.status(401).send({ message: 'Wrong email or password' });
-//         }
-//
-//         var token = jwt.sign({ _id: user._id }, process.env.SECRET, { expiresIn: "60 days" });
-//         res.cookie('nToken', token, { maxAge: 900000, httpOnly: true });
-//
-//         res.redirect('/');
-//       });
-//     })
-//   });
-//
-//
-//   // LOGOUT
-//   app.get('/logout', function(req, res, next) {
-//     res.clearCookie('nToken');
-//
-//     res.redirect('/');
-//   })
-// }
+
+const jwt = require('jsonwebtoken');
+const User = require('../models/user.js');
+const Trip = require('../models/trip.js');
+
+
+module.exports = (app) => {
+  // API INDEX ROUTE
+  app.get('/trips', function (req, res) {
+    Trip.find(function(err, trips) {
+      if (err) {
+        console.log(err)
+      }
+        res.send({trips: trips});
+    })
+  })
+
+  // WEB INDEX
+  // app.get('/', function (req, res) {
+  //   const now = new Date();
+  //   Trip.find({ departsOn: { $gt: now } }).sort('departsOn desc').exec(function(err, trips) {
+  //     if (err) { return console.log(err) }
+  //      res.render('trips-index', {trips: trips});
+  //   })
+  // })
+
+  // NEW
+  app.get('/sign-up', function (req, res) {
+    res.render('sign-up', { user: user });
+  })
+
+  //CREATE
+  app.post('/sign-up', function (req, res) {
+    User.create(req.body, function(err, user) {
+      if (req.header('Content-Type') == 'application/json') {
+        if (err) {
+          console.log(err)
+          return res.status(400).send({ message: "There was a problem creating your trip."})
+        }
+        return res.send({ trip: trip }); //=> RETURN JSON
+      } else {
+        if (err) {
+          console.log(err)
+          return res.redirect('/trips/new')
+        }
+        return res.redirect('/trips/' + trip._id);
+      }
+    })
+  })
+
+  // SHOW
+  app.get('/trips/:id', function (req, res) {
+    Trip.findById(req.params.id).exec(function (err, trip) {
+      if (req.header('Content-Type') == 'application/json') {
+        return res.send({ trip: trip }); //=> RETURN JSON
+      } else {
+        return res.render('trips-show', {trip: trip});
+      }
+    })
+  })
+
+  //UPDATE
+  app.put('/trips/:id', function (req, res) {
+    req.body.departsOn = new Date(req.body.departsOn + " PST")
+    req.body.returnsOn = new Date(req.body.returnsOn + " PST")
+
+    Trip.findByIdAndUpdate(req.params.id,  req.body, function(err, trip) {
+      if (err) { return console.log(err) }
+      res.redirect('/trips/' + trip._id);
+    })
+  })
+
+  // EDIT
+  app.get('/trips/:id/edit', function (req, res) {
+    Trip.findById(req.params.id, function(err, trip) {
+      if (err) { return console.log(err) }
+      res.render('trips-edit', { trip: trip, timesOfDay: Trip.timesOfDay() });
+    })
+  })
+
+  // DELETE
+  app.delete('/trips/:id', function (req, res) {
+    console.log('hello')
+    Trip.findByIdAndRemove(req.params.id, function(err) {
+      if (err) { return console.log(err) }
+      console.log('hello 2')
+      if (req.header('Content-Type') == 'application/json') {
+        return res.send({"message": "Trip deleted sucessfully"}).status(200) //=> RETURN JSON
+      } else {
+        return res.redirect('/');
+      }
+    })
+  })
+
+
+};

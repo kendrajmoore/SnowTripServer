@@ -1,8 +1,8 @@
-BUGS
 
-Origin & destination in trips
+
+Origin & destination in trips-done
 Make return optional
-Make two trips - and link them 
+Make two trips - and link them
 
 Add Users -first, last, email, phone, password
 

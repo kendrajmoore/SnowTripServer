@@ -2,15 +2,13 @@ require("dotenv").config();
 const express = require('express')
 const app = express()
 const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
 const methodOverride = require('method-override');
 const jwt = require('jsonwebtoken');
 
 // HANDLEBARS
 const exphbs  = require('express-handlebars');
 const moment = require('moment');
-// const moment = require('moment-timezone');
-// moment().tz("America/Los_Angeles").format();
-// moment.tz.guess();
 const hbs = exphbs.create({
     // Specify helpers which are only registered on this instance.
     helpers: {
@@ -36,12 +34,29 @@ mongoose.set('debug', true)
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json(true))
-
+app.use(cookieParser())
 app.use(methodOverride('_method'));
+
+const checkAuth = function (req, res, next) {
+  console.log("Checking authentication");
+
+  if (typeof req.cookies.nToken === 'undefined' || req.cookies.nToken === null) {
+    req.user = null;
+  } else {
+    const token = req.cookies.nToken;
+    const decodedToken = jsonwebtoken.decode(token, { complete: true }) || {};
+    req.user = decodedToken.payload;
+  }
+
+  next()
+}
+
+app.use(checkAuth)
 
 
 //ROUTES
 require('./controller/trips.js')(app);
+require('./controller/users.js')(app);
 
 app.listen(process.env.PORT || 3000, function () {
   console.log('Portfolio App listening on port 3000!')
