@@ -29,10 +29,17 @@ module.exports = (app) => {
   // })
 
   //NEW
-  app.get('/sign-up', function (req, res) {
+
+  app.get('sign-up', (req, res) => {
     const user = new User;
-    res.render('sign-up', { user : user });
+    res.render('sign-up', { user:user });
   })
+
+
+  // app.get('/sign-up', function (req, res) {
+  //   const user = new User;
+  //   res.render('sign-up', { user : user });
+  // })
 
   //CREATE
   app.post('/sign-up', function (req, res) {

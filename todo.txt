@@ -1,3 +1,4 @@
+Take out hours from the date function
 departsAt-change
 API User backend
 
