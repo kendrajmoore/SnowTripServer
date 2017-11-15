@@ -20,13 +20,13 @@ module.exports = (app) => {
       res.redirect('/');
     })
 
-  app.get('/', function (req, res) {
-    const user = new User;
-    User.find({ departsOn: { $gt: now } }).sort('departsOn desc').exec(function(err, user) {
-      if (err) { return console.log(err) }
-       res.render('/login', { user: user });
-    })
-  })
+  // app.get('/', function (req, res) {
+  //   const user = new User;
+  //   User.find({ departsOn: { $gt: now } }).sort('departsOn desc').exec(function(err, user) {
+  //     if (err) { return console.log(err) }
+  //      res.render('/login', { user: user });
+  //   })
+  // })
 
   //NEW
   app.get('/sign-up', function (req, res) {
