@@ -1,0 +1,55 @@
+<div class="form-group">
+  <label for="origin">Origin</label><br>
+  <select class="form-control" name="origin" value="{{trip.origin}}">
+      <option>San Francisco</option>
+      <option>Oakland</option>
+  </select>
+</div>
+
+<div class="form-group">
+  <label for="destination">Destination</label><br>
+  <select class="form-control" name="destination" value="{{trip.destination}}">
+      <option>N. Tahoe</option>
+      <option>S. Tahoe</option>
+  </select>
+</div>
+
+
+
+<div class="form-group">
+  <label for="departsOn">Departure Date</label><br>
+  <input class="form-control" type=DATE  name="departsOn" value="{{formatTime trip.departsOn "YYYY-MM-DD"}}"/>
+</div>
+
+<div class="form-group">
+  <label for="departsInThe">Departure Time</label><br>
+  <select class="form-control" name="departsInThe" value="{{trip.returnsInThe}}">
+    {{#each timesOfDay}}
+      <option>{{this}}</option>
+    {{/each}}
+  </select>
+</div>
+
+<div class="form-group">
+  <form id="myform">
+    <label for="check1">Return</label>
+   <input id="check1" type="checkbox">
+  <label for="returnsOn">Return Date</label><br>
+  <input class="form-control" type=DATE  name="returnsOn" value="{{formatTime trip.returnsOn "YYYY-MM-DD"}}" />
+</div>
+
+<div class="form-group">
+  <label for="returnsInThe">Return Time</label><br>
+  <select class="form-control" name="returnsInThe" value="{{trip.returnsInThe}}">
+    {{#each timesOfDay}}
+      <option>{{this}}</option>
+    {{/each}}
+  </select>
+</div>
+
+<!-- BUTTON -->
+<p>
+    <button type="submit" class="btn btn-primary">Save Trip</button>
+    <a href="/" class="btn btn-primary">
+     Cancel</a>
+</p>

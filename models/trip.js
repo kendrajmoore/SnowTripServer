@@ -1,7 +1,7 @@
-const mongoose = require('mongoose'),
-    Schema = mongoose.Schema;
+const mongoose = require('mongoose');
+const    Schema = mongoose.Schema;
 const trip = require('./user');
-
+//departsAt -change
 const TripSchema = new Schema({
     departsOn      : { type:Date, required: true },
     departsInThe   : { type: String, required: true},

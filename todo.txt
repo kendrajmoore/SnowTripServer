@@ -1,10 +1,10 @@
-
+departsAt-change
+API User backend
 
 Origin & destination in trips-done
 Make return optional
 Make two trips - and link them
 
-Add Users -first, last, email, phone, password
 
 CRUD Users -/sign up(create get is the form post is where you create the user), /login, /profile(users show, to edit you can call settings)
 Associate trips
@@ -18,7 +18,7 @@ Phone
 make separate return trips.
 make it work no matter what timezone they are in...
 
-
+Add Users -first, last, email, phone, password -DONE
 add date picker to trips-form- DONE
 Fix mongoose error -DONE
 Style trips-show.hbs - render dates in english- DONE

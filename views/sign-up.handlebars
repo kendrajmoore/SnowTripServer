@@ -1,15 +1,27 @@
 <form method="POST" action="/sign-up">
 
+  <!-- USERNAME -->
+  <div class="form-group">
+      <label for="post-title">First Name:</label>
+      <input class="form-control" type="text" value="{{firstName}}" placeholder="First name" />
+  </div>
+
+  <!-- USERNAME -->
+  <div class="form-group">
+      <label for="post-title">Last Name:</label>
+      <input class="form-control" type="text" value="{{lastName}}" placeholder="Last name" />
+  </div>
+
     <!-- USERNAME -->
     <div class="form-group">
-        <label for="post-title">Username:</label>
-        <input class="form-control" type="text" name="username" placeholder="Username" />
+        <label for="post-title">Email Adddress:</label>
+        <input class="form-control" type="text" value="{{email}}" placeholder="email@email.com" />
     </div>
 
     <!-- PASSWORD -->
     <div class="form-group">
-        <label for="post-subreddit">Password:</label>
-        <input class="form-control" type="password" name="password" placeholder="Password" />
+        <label for="post-subreddit">Phone Number:</label>
+        <input class="form-control" type="Number" value={{"phone"}} placeholder="Phone Number" />
     </div>
 
     <!-- BUTTON -->
