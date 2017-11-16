@@ -1,3 +1,41 @@
+<style>
+    body, html {
+      height: 100%;
+    }
+
+    .modal.show {
+      display: flex;
+    }
+
+    .modal {
+      display: none;
+      position: absolute;
+      left: 0;
+      top: 0;
+      background-color: rgba(100, 0, 0, 0.5);
+      width: 100%;
+      height: 100%;
+
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal > div {
+      display: flex;
+      width: 200px;
+      height: 160px;
+      background-color: #fff;
+      border-radius: 20px;
+      justify-content: center;
+      align-items: center;
+    }
+  .modal > button {
+      align-self: flex-end;
+      margin-left: auto;
+    }
+  </style>
+
+
 <div class="form-group">
   <label for="origin">Origin</label><br>
   <select class="form-control" name="origin" value="{{trip.origin}}">
@@ -29,35 +67,41 @@
     {{/each}}
   </select>
 </div>
+<input id="check1" type="checkbox">
+<label for="check1">No Return</label>
+<br>
+<br>
+<div id="return" class="return">
 
-<div class="form-group">
-  <form id="myform">
-    <label for="check1">Return</label>
-   <input id="check1" type="checkbox">
-  <label for="returnsOn">Return Date</label><br>
-  <input class="form-control" type=DATE  name="returnsOn" value="{{formatTime trip.returnsOn "YYYY-MM-DD"}}" />
-</div>
+  <div class="form-group">
+    <form id="myform">
+    <label for="returnsOn">Return Date</label><br>
+    <input class="form-control" type=DATE  name="returnsOn" value="{{formatTime trip.returnsOn "YYYY-MM-DD"}}" />
+  </div>
 
-<div class="form-group">
-  <label for="returnsInThe">Return Time</label><br>
-  <select class="form-control" name="returnsInThe" value="{{trip.returnsInThe}}">
-    {{#each timesOfDay}}
-      <option>{{this}}</option>
-    {{/each}}
-  </select>
+  <div class="form-group">
+    <label for="returnsInThe">Return Time</label><br>
+    <select class="form-control" name="returnsInThe" value="{{trip.returnsInThe}}">
+      {{#each timesOfDay}}
+        <option>{{this}}</option>
+      {{/each}}
+    </select>
+  </div>
 </div>
 
 <!-- BUTTON -->
-<p>
+    <p>
     <button type="submit" class="btn btn-primary">Save Trip</button>
     <a href="/" class="btn btn-primary">
      Cancel</a>
-</p>
-<script>
-$('#myform').on('change', ':checkbox', function () {
-    if ($(this).is(':checked')) {
-        // console.log($(this).val() + ' is now checked
-    } else {
-        console.log($(this).val() + ' is now unchecked');
-    }
-});</script>
+
+           <script>
+           src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"
+           $('.check1').click(function() {
+            if( $(this).is(':checked')) {
+                $("#return").show();
+            } else {
+                $("#return").hide();
+            }
+});
+            </script>

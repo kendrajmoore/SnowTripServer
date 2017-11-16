@@ -28,16 +28,16 @@ module.exports = function(app) {
       })
     })
       //NEW
-      app.get('/trips/new', (req, res) => {
-        res.render('trips-new', { timesOfDay: Trip.timesofDay() });
-      })
+      // app.get('/trips/new', (req, res) => {
+      //   res.render('trips-new', { timesOfDay: Trip.timesofDay() });
+      // })
     // NEW
-    // app.get('/trips/new', function (req, res) {
-    //   res.render('trips-new', { timesOfDay: Trip.timesOfDay() });
-    // })
+    app.get('/trips/new', function (req, res) {
+      res.render('trips-new', { timesOfDay: Trip.timesOfDay() });
+    })
 
     //CREATE
-    // 
+    //
     // app.post('/trips', (req, res) => {
     //   req.body.departsOn = new Date(req.body.departsOn + " PST")
     //   req.body.returnsOn = new Date(req.body.returnsOn + " PST")

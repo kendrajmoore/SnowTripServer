@@ -8,10 +8,7 @@ module.exports = (app) => {
   //API INDEX ROUTE
   app.get('/login', function (req, res) {
     User.find(function(err, user) {
-      if (err) {
-        console.log(err)
-      }
-        res.send({user: user});
+        res.render('login');
     })
   })
 
@@ -20,46 +17,41 @@ module.exports = (app) => {
       res.redirect('/');
     })
 
-  // app.get('/', function (req, res) {
-  //   const user = new User;
-  //   User.find({ departsOn: { $gt: now } }).sort('departsOn desc').exec(function(err, user) {
-  //     if (err) { return console.log(err) }
-  //      res.render('/login', { user: user });
-  //   })
-  // })
+    // LOGIN
+app.post('/login', function(req, res, next) {
+  User.findOne({ username: req.body.username }, "+password", function (err, user) {
+    if (!user) { return res.status(401).send({ message: 'Wrong username or password' }) };
+    user.comparePassword(req.body.password, function (err, isMatch) {
+      if (!isMatch) {
+        return res.status(401).send({ message: 'Wrong username or password' });
+      }
+
+      const token = jwt.sign({ _id: user._id }, process.env.SECRET, { expiresIn: "60 days" });
+      res.cookie('nToken', token, { maxAge: 900000, httpOnly: true });
+
+      res.redirect('/');
+    });
+  })
+});
 
   //NEW
 
-  app.get('sign-up', (req, res) => {
+  app.get('/sign-up', function (req, res) {
     const user = new User;
-    res.render('sign-up', { user:user });
+    res.render('sign-up', { user : user });
   })
-
-
-  // app.get('/sign-up', function (req, res) {
-  //   const user = new User;
-  //   res.render('sign-up', { user : user });
-  // })
 
   //CREATE
   app.post('/sign-up', function (req, res) {
     User.create(req.body, function(err, user) {
-      if (req.header('Content-Type') == 'application/json') {
         if (err) {
           console.log(err)
           return res.status(400).send({ message: "There was a problem creating your account."})
-        }
-        return res.send({ user: user }); //=> RETURN JSON
       } else {
-        if (err) {
-          console.log(err)
-          return res.redirect('/sign-up')
-        }
-        return res.redirect('/profile');
+          return res.redirect('/login')
       }
     })
   })
-
   //SHOW
   app.get('/profile', function (req, res) {
     User.findById(req.params.id).exec(function (err, user) {

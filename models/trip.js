@@ -3,6 +3,9 @@ const    Schema = mongoose.Schema;
 const trip = require('./user');
 //departsAt -change
 const TripSchema = new Schema({
+    Origin         : { type: String, required: true},
+    Return         : { type: String, required: false},
+
     departsOn      : { type:Date, required: true },
     departsInThe   : { type: String, required: true},
 
@@ -11,6 +14,8 @@ const TripSchema = new Schema({
 
     intialTrip     : { type: Schema.Types.ObjectId, ref: "Trip"},
     returnTrip     : { type: Schema.Types.ObjectId, ref: "Trip"}
+
+
 });
 
 TripSchema.statics.timesOfDay = function() {
