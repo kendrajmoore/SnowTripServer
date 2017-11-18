@@ -5,6 +5,7 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const methodOverride = require('method-override');
 const jwt = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
 
 // HANDLEBARS
 const exphbs  = require('express-handlebars');

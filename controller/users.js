@@ -42,16 +42,29 @@ app.post('/login', function(req, res, next) {
   })
 
   //CREATE
-  app.post('/sign-up', function (req, res) {
-    User.create(req.body, function(err, user) {
-        if (err) {
-          console.log(err)
-          return res.status(400).send({ message: "There was a problem creating your account."})
-      } else {
-          return res.redirect('/login')
-      }
-    })
-  })
+  app.post('/sign-up', function(req, res) {
+    const user = new User(req.body);
+    //AUTH USER TOKEN
+    user.save().then((user) => {
+      const token = jwt.sign({ _id: user._id }, process.env.SECRET, { expiresIn: "60 days" });
+      res.cookie('nToken', token, { maxAge: 900000, httpOnly: true });
+      console.log(req.cookies)
+      res.redirect('/');
+    }).catch((err) => {
+      console.log(err.message);
+    });
+  });
+
+  // app.post('/sign-up', function (req, res) {
+  //   User.create(req.body, function(err, user) {
+  //       if (err) {
+  //         console.log(err)
+  //         return res.status(400).send({ message: "There was a problem creating your account."})
+  //     } else {
+  //         return res.redirect('/login')
+  //     }
+  //   })
+  // })
   //SHOW
   app.get('/profile', function (req, res) {
     User.findById(req.params.id).exec(function (err, user) {
