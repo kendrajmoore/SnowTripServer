@@ -27,27 +27,18 @@ module.exports = function(app) {
          res.render('trips-index', {trips: trips});
       })
     })
-      //NEW
-      // app.get('/trips/new', (req, res) => {
-      //   res.render('trips-new', { timesOfDay: Trip.timesofDay() });
-      // })
+    
     // NEW
     app.get('/trips/new', function (req, res) {
       res.render('trips-new', { timesOfDay: Trip.timesOfDay() });
     })
 
+
+    app.get('/return', function (req, res) {
+      res.render('return', { timesOfDay: Trip.timesOfDay() });
+    })
     //CREATE
-    //
-    // app.post('/trips', (req, res) => {
-    //   req.body.departsOn = new Date(req.body.departsOn + " PST")
-    //   req.body.returnsOn = new Date(req.body.returnsOn + " PST")
-    //   Trip.create(req.body, (trip) => {
-    //     if(req.header('Content-Type') ==
-    //     'application/json') {
-    //       return res.status(400)
-    //     }
-    //   })
-    // })
+
     app.post('/trips', function (req, res) {
       req.body.departsOn = new Date(req.body.departsOn + " PST")
       req.body.returnsOn = new Date(req.body.returnsOn + " PST")

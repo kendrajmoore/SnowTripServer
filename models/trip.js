@@ -3,7 +3,7 @@ const    Schema = mongoose.Schema;
 const trip = require('./user');
 //departsAt -change
 const TripSchema = new Schema({
-    Origin         : { type: String, required: true},
+    Origin         : { type: String, required: false},
     Return         : { type: String, required: false},
 
     departsOn      : { type:Date, required: true },

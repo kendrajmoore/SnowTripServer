@@ -1,3 +1,5 @@
+-Mongoose save as a Unix date so that can be converted to swift
+
 Take out hours from the date function
 departsAt-change
 API User backend

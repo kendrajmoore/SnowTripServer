@@ -32,41 +32,13 @@
     {{/each}}
   </select>
 </div>
-<input id="check1" type="checkbox">
-<label for="check1">No Return</label>
-<br>
-<br>
-<div id="return" class="return">
 
-  <div class="form-group">
-    <form id="myform">
-    <label for="returnsOn">Return Date</label><br>
-    <input class="form-control" type=DATE  name="returnsOn" value="{{formatTime trip.returnsOn "YYYY-MM-DD"}}" />
-  </div>
 
-  <div class="form-group">
-    <label for="returnsInThe">Return Time</label><br>
-    <select class="form-control" name="returnsInThe" value="{{trip.returnsInThe}}">
-      {{#each timesOfDay}}
-        <option>{{this}}</option>
-      {{/each}}
-    </select>
-  </div>
-</div>
 
 <!-- BUTTON -->
     <p>
     <button type="submit" class="btn btn-primary">Save Trip</button>
     <a href="/" class="btn btn-primary">
      Cancel</a>
-
-           <script>
-           src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"
-           $('.check1').click(function() {
-            if( $(this).is(':checked')) {
-                $("#return").show();
-            } else {
-                $("#return").hide();
-            }
-});
-            </script>
+     <a href="/return" class="btn btn-primary">
+      Return Trip</a>
