@@ -1,11 +1,11 @@
--Mongoose save as a Unix date so that can be converted to swift
+-Mongoose save as a Unix date so that can be converted to swift-maybe
 
 Take out hours from the date function
 departsAt-change
 API User backend
 
 Origin & destination in trips-done
-Make return optional
+Make return optional-Done
 Make two trips - and link them
 
 
