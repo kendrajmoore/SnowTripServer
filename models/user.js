@@ -2,11 +2,12 @@ const mongoose = require('mongoose');
 const    Schema = mongoose.Schema;
 const bcrypt = require('bcrypt');
 const UserSchema = new Schema({
-    firstName       : { type: String },
-    lastName        : { type: String },
-    userId          : { type: Number },
+    // firstName       : { type: String },
+    // lastName        : { type: String },
+    // userId          : { type: Number },
+    fullName        : { type: String},
     email           : { type: String },
-    phone           : { type: Number }
+    phone           : { type: Number, required: true }
 
 });
 

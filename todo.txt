@@ -1,3 +1,8 @@
+-How to authicate with a phone Number
+
+-
+
+
 -Mongoose save as a Unix date so that can be converted to swift-maybe
 
 Take out hours from the date function
