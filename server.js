@@ -4,7 +4,7 @@ const app = express()
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const methodOverride = require('method-override');
-const jsonwebtoken = require('jsonwebtoken');
+// const jsonwebtoken = require('jsonwebtoken');
 const bcrypt = require('bcrypt');
 
 // HANDLEBARS

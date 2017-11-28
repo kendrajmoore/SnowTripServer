@@ -13,6 +13,7 @@
     "flatpickr": "^4.0.7",
     "handlebars": "^4.0.11",
     "helper-dateformat": "^1.0.0",
+    "jade": "^1.11.0",
     "jquery": "^3.2.1",
     "jsonwebtoken": "^8.1.0",
     "method-override": "^2.3.10",
@@ -21,8 +22,12 @@
     "moment-timezone": "^0.5.14",
     "mongoose": "^4.12.6",
     "node": "^9.2.0",
+    "nstore": "^0.5.2",
     "pikaday": "^1.6.1",
-    "rc-calendar": "^9.1.12"
+    "rc-calendar": "^9.1.12",
+    "socket.io": "^2.0.4",
+    "speakeasy": "^2.0.0",
+    "twilio": "^3.10.0"
   },
   "devDependencies": {},
   "scripts": {
