@@ -1,6 +1,12 @@
 require("dotenv").config();
 const express = require('express')
-const app = express()
+const app = express();
+// const  http = require(http);
+// const  server = http.createServer(app);
+const  io     = require('socket.io');
+const  nStore = require('nStore');
+const  client = require('twilio');
+const  speakeasy = require('speakeasy');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const methodOverride = require('method-override');
@@ -22,9 +28,12 @@ const hbs = exphbs.create({
     }
 });
 
-app.locals.layout = "index"
+app.locals.layout = "main"
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
+
+// Production Authy API key
+   //authyApiKey: process.env.740c644c9857a2c750995e39dd378d22
 
 // MONGOOSE
 const mongoose = require('mongoose');

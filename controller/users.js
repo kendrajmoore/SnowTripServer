@@ -18,21 +18,64 @@ module.exports = (app) => {
     })
 
     // LOGIN
-app.post('/login', function(req, res, next) {
-  User.findOne({ username: req.body.username }, "+password", function (err, user) {
-    if (!user) { return res.status(401).send({ message: 'Wrong username or password' }) };
-    user.comparePassword(req.body.password, function (err, isMatch) {
-      if (!isMatch) {
-        return res.status(401).send({ message: 'Wrong username or password' });
-      }
+// app.post('/login', function(req, res, next) {
+//   User.findOne({ username: req.body.username }, "+password", function (err, user) {
+//     if (!user) { return res.status(401).send({ message: 'Wrong username or password' }) };
+//     user.comparePassword(req.body.password, function (err, isMatch) {
+//       if (!isMatch) {
+//         return res.status(401).send({ message: 'Wrong username or password' });
+//       }
+//
+//       const token = jwt.sign({ _id: user._id }, process.env.SECRET, { expiresIn: "60 days" });
+//       res.cookie('nToken', token, { maxAge: 900000, httpOnly: true });
+//
+//       res.redirect('/');
+//     });
+//   })
+// });
 
-      const token = jwt.sign({ _id: user._id }, process.env.SECRET, { expiresIn: "60 days" });
-      res.cookie('nToken', token, { maxAge: 900000, httpOnly: true });
 
-      res.redirect('/');
-    });
-  })
-});
+// Create a new session, first testing username/password combo
+//exports.create = function(request, response) {
+  //  var email = request.body.email;
+    //var candidatePassword = request.body.password;
+
+    // Look for a user by the given username
+    //User.findOne({
+      //  email: email
+  //  }, function(err, user) {
+    //    if (err || !user) return invalid();
+
+        // We have a user for that username, test password
+      //  user.comparePassword(candidatePassword, function(err, match) {
+        //    if (err || !match) return invalid();
+          //  return valid(user);
+      //  });
+  //  });
+
+    // respond with a 403 for a login error
+  //  function invalid() {
+    //    error(response, 403, 'Invalid username/password combination.');
+  //  }
+
+    // respond with a new session for a valid password, and send a 2FA token
+  //  function valid(user) {
+    //    Session.createSessionForUser(user, false, function(err, sess, authyResponse) {
+      //      if (err || !sess) {
+        //        error(response, 500,
+          //          'Error creating session - please log in again.');
+          //  } else {
+                // Send the unique token for this session and the onetouch response
+              //  response.send({
+                //    token: sess.token,
+                  //  authyResponse: authyResponse
+              //  });
+          //  }
+      //  });
+  //  }
+//};
+
+
 
   //NEW
 
@@ -78,7 +121,6 @@ app.post('/login', function(req, res, next) {
 
   //UPDATE
   app.put('/profile/:id', function (req, res) {
-
     User.findByIdAndUpdate(req.params.id,  req.body, function(err, user) {
       if (err) { return console.log(err) }
       res.redirect('/profile/' + trip._id);
