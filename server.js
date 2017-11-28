@@ -22,7 +22,7 @@ const hbs = exphbs.create({
     }
 });
 
-app.locals.layout = "main"
+app.locals.layout = "index"
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
@@ -38,21 +38,21 @@ app.use(bodyParser.json(true))
 app.use(cookieParser())
 app.use(methodOverride('_method'));
 
-const checkAuth = function (req, res, next) {
-  console.log("Checking authentication");
-
-  if (typeof req.cookies.nToken === 'undefined' || req.cookies.nToken === null) {
-    req.user = null;
-  } else {
-    const token = req.cookies.nToken;
-    const decodedToken = jsonwebtoken.decode(token, { complete: true }) || {};
-    req.user = decodedToken.payload;
-  }
-
-  next()
-}
-
-app.use(checkAuth)
+// const checkAuth = function (req, res, next) {
+//   console.log("Checking authentication");
+//
+//   if (typeof req.cookies.nToken === 'undefined' || req.cookies.nToken === null) {
+//     req.user = null;
+//   } else {
+//     const token = req.cookies.nToken;
+//     const decodedToken = jsonwebtoken.decode(token, { complete: true }) || {};
+//     req.user = decodedToken.payload;
+//   }
+//
+//   next()
+// }
+//
+// app.use(checkAuth)
 
 
 //ROUTES
