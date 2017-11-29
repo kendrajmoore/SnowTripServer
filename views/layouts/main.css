@@ -1305,7 +1305,7 @@
 /* Basic */
 
   #header {
-		background-image: url(car-winter.jpg);
+		/*background-image: url(car-winter.jpg);*/
 		background-repeat: repeat, no-repeat;
 		background-size: auto, cover;
 		background-position: top left, center 0;
@@ -1313,8 +1313,8 @@
 	}
 
 	body {
-		background-color: #183026;
-		background-image: url("images/overlay.png"), url("../../images/bg.jpg");
+		background-color: #8A2BE2;
+		/*background-image: url("images/overlay.png"), url("../../images/bg.jpg");*/
 		background-repeat: repeat, no-repeat;
 		background-size: auto, cover;
 		background-position: top left, center 0;

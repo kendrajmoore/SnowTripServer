@@ -3,33 +3,34 @@
   <!-- USERNAME -->
   <div class="form-group">
       <label for="post-title">First Name:</label>
-      <input class="form-control" type="text" value="{{firstName}}" placeholder="First name" />
+      <!-- name = value  firstName = "..." -->
+      <input name="firstName" class="form-control" type="text" value="{{firstName}}" placeholder="First name" />
   </div>
 
   <!-- USERNAME -->
   <div class="form-group">
       <label for="post-title">Last Name:</label>
-      <input class="form-control" type="text" value="{{lastName}}" placeholder="Last name" />
+      <input name="lastName" class="form-control" type="text" value="{{lastName}}" placeholder="Last name" />
   </div>
 
     <!-- USERNAME -->
     <div class="form-group">
         <label for="post-title">Email Adddress:</label>
-        <input class="form-control" type="text" value="{{email}}" placeholder="email@email.com" />
+        <input name="email" class="form-control" type="text" value="{{email}}" placeholder="email@email.com" />
     </div>
 
     <!-- PASSWORD -->
     <div class="form-group">
         <label for="post-subreddit">Phone Number:</label>
-        <input class="form-control" type="Number" value={{"phone"}} placeholder=111111111/>
+        <input name="phone" class="form-control" type="Number" value={{"phone"}} placeholder=111111111/>
     </div>
     <div class="form-group">
         <label for="post-title">User Name:</label>
-        <input class="form-control" type="username" value="{{userName}}" placeholder="username" />
+        <input name="userName" class="form-control" type="username" value="{{userName}}" placeholder="username" />
     </div>
     <div class="form-group">
         <label for="post-title">Password:</label>
-        <input class="form-control" type="password" value="{{password}}" placeholder="password" />
+        <input name="password" class="form-control" type="password" value="{{password}}" placeholder="password" />
     </div>
 
 

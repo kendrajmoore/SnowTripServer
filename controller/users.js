@@ -84,19 +84,29 @@ module.exports = (app) => {
     res.render('sign-up', { user : user });
   })
 
+    app.post('/sign-up', function (req, res) {
+      User.create(req.body, function(err, user) {
+        console.log(user);
+
+        res.redirect('/user/' + user._id);
+      })
+    })
+
   //CREATE
-  app.post('/sign-up', function(req, res) {
-    const user = new User(req.body);
-    //AUTH USER TOKEN
-    user.save().then((user) => {
-      const token = jwt.sign({ _id: user._id }, process.env.SECRET, { expiresIn: "60 days" });
-      res.cookie('nToken', token, { maxAge: 900000, httpOnly: true });
-      console.log(req.cookies)
-      res.redirect('/');
-    }).catch((err) => {
-      console.log(err.message);
-    });
-  });
+  // app.post('/sign-up', function(req, res) {
+  //   const user = new User(req.body);
+  //
+  //   console.log(req.body)
+  //   //AUTH USER TOKEN
+  //   user.save().then((user) => {
+  //     const token = jwt.sign({ _id: user._id }, process.env.SECRET, { expiresIn: "60 days" });
+  //     res.cookie('nToken', token, { maxAge: 900000, httpOnly: true });
+  //     console.log(req.cookies)
+  //     res.redirect('/');
+  //   }).catch((err) => {
+  //     console.log(err.message);
+  //   });
+  // });
 
   // app.post('/sign-up', function (req, res) {
   //   User.create(req.body, function(err, user) {

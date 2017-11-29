@@ -3,10 +3,10 @@ const express = require('express')
 const app = express();
 // const  http = require(http);
 // const  server = http.createServer(app);
-const  io     = require('socket.io');
-const  nStore = require('nStore');
-const  client = require('twilio');
-const  speakeasy = require('speakeasy');
+const io     = require('socket.io');
+const nStore = require('nStore');
+const client = require('twilio');
+const speakeasy = require('speakeasy');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const methodOverride = require('method-override');
@@ -28,7 +28,7 @@ const hbs = exphbs.create({
     }
 });
 
-app.locals.layout = "index"
+app.locals.layout = "main"
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 
