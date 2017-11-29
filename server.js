@@ -28,7 +28,7 @@ const hbs = exphbs.create({
     }
 });
 
-app.locals.layout = "main"
+app.locals.layout = "index"
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 

@@ -1,6 +1,6 @@
 -How to authicate with a phone Number
 
--Work on user model
+-Work on user model,allow user to upload a photo
 
 
 -Mongoose save as a Unix date so that can be converted to swift-maybe
