@@ -1,11 +1,6 @@
 @import url("https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,300italic,400,600");
 @import url("font-awesome.min.css");
 
-/*
-	Overflow by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-*/
 
 /* Reset */
 
@@ -1308,6 +1303,14 @@
 	}
 
 /* Basic */
+
+  #header {
+		background-image: url(car-winter.jpg);
+		background-repeat: repeat, no-repeat;
+		background-size: auto, cover;
+		background-position: top left, center 0;
+		background-attachment: fixed, fixed;
+	}
 
 	body {
 		background-color: #183026;
