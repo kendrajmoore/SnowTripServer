@@ -69,5 +69,5 @@ require('./controller/trips.js')(app);
 require('./controller/users.js')(app);
 
 app.listen(process.env.PORT || 3000, function () {
-  console.log('Portfolio App listening on port 3000!')
+  console.log('Portfolio App listening on port ' + process.env.PORT)
 })

@@ -20,7 +20,7 @@ const TripSchema = new Schema({
 
 const myDate = new Date();
 const myEpoch = myDate.getTime()/1000.0;
-console.log(myEpoch);
+console.log("I am " + myEpoch + " UNIXtime");
 
 TripSchema.statics.timesOfDay = function() {
   return [ "Early Morning", "Morning", "Noon", "Afternoon", "Evening", "Late"];

@@ -18,7 +18,10 @@ UserSchema.pre('save', function(next){
   if ( !this.createdAt ) {
     this.createdAt = now;
   }
+  next()
 })
+
+
   // ENCRYPT PASSWORD
 //   const user = this;
 //   if (!user.isModified('password')) {
