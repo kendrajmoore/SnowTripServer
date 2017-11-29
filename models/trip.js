@@ -10,7 +10,7 @@ const TripSchema = new Schema({
     departsOn      : { type:Date, required: true },
     departsInThe   : { type: String, required: false},
 
-    returnsOn      : { type:Date, required: true },
+    returnsOn      : { type:Date, required: false },
     returnsInThe   : { type: String, required: false},
 
     intialTrip     : { type: Schema.Types.ObjectId, ref: "Trip"},

@@ -3,15 +3,15 @@ const express = require('express')
 const app = express();
 // const  http = require(http);
 // const  server = http.createServer(app);
-const io     = require('socket.io');
-const nStore = require('nStore');
-const client = require('twilio');
-const speakeasy = require('speakeasy');
+// const io     = require('socket.io');
+// const nStore = require('nStore');
+// const client = require('twilio');
+// const speakeasy = require('speakeasy');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const methodOverride = require('method-override');
 // const jsonwebtoken = require('jsonwebtoken');
-const bcrypt = require('bcrypt');
+// const bcrypt = require('bcrypt');
 
 // HANDLEBARS
 const exphbs  = require('express-handlebars');
