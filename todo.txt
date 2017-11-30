@@ -1,28 +1,43 @@
 -How to authicate with a phone Number
+-Make two Trips
+--show profile
 
 -AUTH
  - sign-up responds to JSON & HTML DONE
  - set the cookie DONE
  - Encrypting passwords DONE
- - CheckAuth must check header: Authentication(Bearer)
+ - CheckAuth must check header: Authentication(Bearer) DONE
 
 
-LOGIN
-GET '/sessions/new'
-POST '/sessions'
+Associate trips
+  trips#create
+    departsOn, origin, destination => save tripA
+    if returnsOn is present?
+      make a tripB with origin: destination, desitnation: origin with departsOn: returnsOn, initialTrip = tripA, tripA.returnTrip = tripB
+    else (one way trip)
+      do nothing
 
-SIGN-UP
-GET '/users/new'
-POST '/users'
+  tripA = {
+    departsOn: Date,
+    returnsOn: Date,
+    origin: San Francisco,
+    destination: Tahoe,
+    returnTrip: tripB._id,
+    initialTrip: null
 
+  }
 
-LOGIN
-GET '/login'
-POST '/login'
+  tripB = {
+    departsOn: tripA.returnsOn
+    returnsOn: null,
+    origin: Tahoe,
+    destination: San Francisco,
+    returnTrip: null,
+    initialTrip: tripA._id
+  }
 
-SIGN-UP
-GET '/sign-up' => RETURNS HTML FORM
-POST '/sign-up' => SAVES FORM DATA AND RETURNS TOKEN
+  trips#index
+  Trip.find().populate('returnTrip initialTrip');
 
 
 -Mongoose save as a Unix date so that can be converted to swift-maybe
@@ -99,3 +114,43 @@ Trips#index
 ERD - departsInThe for the actual time DONE
 
 Flask server - CRUD one resource - trips DONE
+
+
+
+
+
+
+LOGIN
+GET '/sessions/new'
+POST '/sessions'
+
+SIGN-UP
+GET '/users/new'
+POST '/users'
+
+---------
+
+LOGIN
+
+GET '/login'
+POST '/login'
+
+REGISTERING
+GET '/registration'
+POST '/registration'
+
+---------
+
+LOGIN
+GET '/login'
+POST '/login'
+
+SIGN-UP
+GET '/sign-up' => RETURNS HTML FORM
+POST '/sign-up' => SAVES FORM DATA AND RETURNS TOKEN
+
+
+Resource - photos, Photo, photo
+Model - Photo, photo.js
+Controler - photos.js
+Collection - photos

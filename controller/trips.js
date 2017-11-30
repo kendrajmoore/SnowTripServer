@@ -5,13 +5,8 @@ module.exports = function(app) {
 
     // API INDEX ROUTE
     //
-    // app.get('/trips', (req, res) => {
-    //   Trip.findById.then(trips) {
-    //     res.send({ trips });
-    //   }
-    // })
     app.get('/trips', function (req, res) {
-      Trip.find(function(err, trips) {
+      Trip.findById(function(err, trips) {
         if (err) {
           console.log(err)
         }
@@ -27,18 +22,25 @@ module.exports = function(app) {
          res.render('trips-index', {trips: trips});
       })
     })
-    
+
     // NEW
     app.get('/trips/new', function (req, res) {
       res.render('trips-new', { timesOfDay: Trip.timesOfDay() });
     })
 
-
     app.get('/return', function (req, res) {
       res.render('return', { timesOfDay: Trip.timesOfDay() });
     })
-    //CREATE
 
+
+    //trips#create
+      //departsOn, origin, destination => save tripA
+      //if returnsOn is present?
+        //make a tripB with origin: destination, desitnation: origin with departsOn: returnsOn, initialTrip = tripA, tripA.returnTrip = tripB
+      //else (one way trip)
+        //do nothing
+
+    //CREATE
     app.post('/trips', function (req, res) {
       req.body.departsOn = new Date(req.body.departsOn + " PST")
       req.body.returnsOn = new Date(req.body.returnsOn + " PST")
@@ -92,10 +94,8 @@ module.exports = function(app) {
 
     // DELETE
     app.delete('/trips/:id', function (req, res) {
-      console.log('hello')
       Trip.findByIdAndRemove(req.params.id, function(err) {
         if (err) { return console.log(err) }
-        console.log('hello 2')
         if (req.header('Content-Type') == 'application/json') {
           return res.send({"message": "Trip deleted sucessfully"}).status(200) //=> RETURN JSON
         } else {
