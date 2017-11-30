@@ -5,17 +5,44 @@ const Trip = require('../models/trip.js');
 
 
 module.exports = (app) => {
-  //API INDEX ROUTE
-  app.get('/login', function (req, res) {
-    User.find(function(err, user) {
-        res.render('login');
+    //API INDEX ROUTE
+    app.get('/login', function (req, res) {
+      User.find(function(err, user) {
+          res.render('login');
+      })
     })
-  })
 
     app.get('/logout', (req, res) => {
       res.clearCookie('nToken');
       res.redirect('/');
     })
+
+    app.get('/sign-up', function (req, res) {
+      res.render('sign-up');
+    })
+
+    app.post('/sign-up', (req, res) => {
+      const user = new User(req.body);
+
+      console.log(user)
+
+      //AUTH USER TOKEN
+      user.save((err) => {
+        const token = jwt.sign({ _id: user._id }, process.env.SECRET, { expiresIn: "60 days" });
+        if (req.header('Content-Type') == 'application/json') {
+          // MOBILE/JSON
+          if (err) { return console.log (err) }
+          res.send({ nToken: token });
+        } else {
+          // WEB/HTML
+          if (err) { return console.log (err) }
+
+          res.cookie('nToken', token, { maxAge: 900000, httpOnly: true });
+          res.redirect('/');
+        }
+      });
+    });
+
 
     // LOGIN
 // app.post('/login', function(req, res, next) {
@@ -79,10 +106,7 @@ module.exports = (app) => {
 
   //NEW
 
-  app.get('/sign-up', function (req, res) {
-    const user = new User;
-    res.render('sign-up', { user : user });
-  })
+
 
     // app.post('/sign-up', function (req, res) {
     //   User.create(req.body, function(err, user) {
@@ -93,30 +117,6 @@ module.exports = (app) => {
     // })
 
   //CREATE
-  app.post('/sign-up', (req, res) => {
-    const user = new User(req.body);
-
-    console.log(user)
-    console.log('-----------');
-
-    // user.save((user) => {
-    //   console.log("User saved Successfully")
-    //   console.log(user)
-    // }).catch((err) => {
-    //   console.log(err.message);
-    // })
-
-    //AUTH USER TOKEN
-    user.save().then((user) => {
-      console.log("???????");
-      const token = jwt.sign({ _id: user._id }, process.env.SECRET, { expiresIn: "60 days" });
-      res.cookie('nToken', token, { maxAge: 900000, httpOnly: true });
-      console.log(req.cookies)
-      res.redirect('/');
-    }).catch((err) => {
-      console.log(err.message);
-    });
-  });
 
   // app.post('/sign-up', function (req, res) {
   //   User.create(req.body, function(err, user) {

@@ -1,6 +1,6 @@
 const mongoose = require('mongoose');
 const    Schema = mongoose.Schema;
-// const bcrypt = require('bcrypt');
+const bcrypt = require('bcrypt');
 const UserSchema = new Schema({
     firstName       : { type: String },
     lastName        : { type: String },
@@ -18,30 +18,27 @@ UserSchema.pre('save', function(next){
   if ( !this.createdAt ) {
     this.createdAt = now;
   }
-  next()
-})
-
 
   // ENCRYPT PASSWORD
-//   const user = this;
-//   if (!user.isModified('password')) {
-//     return next();
-//   }
-//   bcrypt.genSalt(10, function(err, salt) {
-//     bcrypt.hash(user.password, salt, function(err, hash) {
-//
-//       user.password = hash;
-//       next();
-//     });
-//   });
-// });
+  const user = this;
+  if (!user.isModified('password')) {
+    return next();
+  }
+  bcrypt.genSalt(10, function(err, salt) {
+    bcrypt.hash(user.password, salt, function(err, hash) {
+
+      user.password = hash;
+      next();
+    });
+  });
+});
 
 
-// UserSchema.methods.comparePassword = function(password, done) {
-//   bcrypt.compare(password, this.password, function(err, isMatch) {
-//     done(err, isMatch);
-//   });
-// };
+UserSchema.methods.comparePassword = function(password, done) {
+  bcrypt.compare(password, this.password, function(err, isMatch) {
+    done(err, isMatch);
+  });
+};
 
 // Register this user if it's a new user
   //  authy.register_user(self.email, self.phone, self.countryCode,

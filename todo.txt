@@ -1,6 +1,28 @@
 -How to authicate with a phone Number
 
--Work on user model,allow user to upload a photo
+-AUTH
+ - sign-up responds to JSON & HTML DONE
+ - set the cookie DONE
+ - Encrypting passwords DONE
+ - CheckAuth must check header: Authentication(Bearer)
+
+
+LOGIN
+GET '/sessions/new'
+POST '/sessions'
+
+SIGN-UP
+GET '/users/new'
+POST '/users'
+
+
+LOGIN
+GET '/login'
+POST '/login'
+
+SIGN-UP
+GET '/sign-up' => RETURNS HTML FORM
+POST '/sign-up' => SAVES FORM DATA AND RETURNS TOKEN
 
 
 -Mongoose save as a Unix date so that can be converted to swift-maybe

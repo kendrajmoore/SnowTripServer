@@ -1,17 +1,11 @@
 require("dotenv").config();
 const express = require('express')
 const app = express();
-// const  http = require(http);
-// const  server = http.createServer(app);
-// const io     = require('socket.io');
-// const nStore = require('nStore');
-// const client = require('twilio');
-// const speakeasy = require('speakeasy');
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const methodOverride = require('method-override');
-// const jsonwebtoken = require('jsonwebtoken');
-// const bcrypt = require('bcrypt');
+const jsonwebtoken = require('jsonwebtoken');
+const bcrypt = require('bcrypt');
 
 // HANDLEBARS
 const exphbs  = require('express-handlebars');
@@ -47,21 +41,25 @@ app.use(bodyParser.json(true))
 app.use(cookieParser())
 app.use(methodOverride('_method'));
 
-// const checkAuth = function (req, res, next) {
-//   console.log("Checking authentication");
-//
-//   if (typeof req.cookies.nToken === 'undefined' || req.cookies.nToken === null) {
-//     req.user = null;
-//   } else {
-//     const token = req.cookies.nToken;
-//     const decodedToken = jsonwebtoken.decode(token, { complete: true }) || {};
-//     req.user = decodedToken.payload;
-//   }
-//
-//   next()
-// }
-//
-// app.use(checkAuth)
+const checkAuth = function (req, res, next) {
+  console.log("Checking authentication");
+
+  if (typeof req.cookies.nToken === 'undefined' || req.cookies.nToken === null || (!req.headers.authorization)) {
+    req.user = null;
+  } else {
+    if (req.headers.authorization) {
+      const token = req.headers.authorization
+    } else {
+      const token = req.cookies.nToken;
+    }
+    const decodedToken = jsonwebtoken.decode(token, { complete: true }) || {};
+    req.user = decodedToken.payload; // { _id: userId }
+  }
+
+  next();
+}
+
+app.use(checkAuth)
 
 
 //ROUTES
