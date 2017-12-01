@@ -1,38 +1,9 @@
-<div class="form-group">
-  <label for="origin">Name</label><br>
-  <select class="form-control" name="name" value="{{user.fullName}}">
-      <!-- <option>San Francisco</option>
-      <option>Oakland</option> -->
-  </select>
-</div>
-
-<div class="form-group">
-  <label for="destination">Location</label><br>
-  <select class="form-control" name="destination" value="{{trip.origin}}">
-      <option>San Francisco</option>
-      <option>Oakland</option>
-  </select>
-</div>
+<form method="POST" action="/profile">
 
 
 
-<div class="form-group">
-  <label for="destination">Location</label><br>
-  <select class="form-control" name="destination" value="{{user.email}}">
-  </select>
-</div>
-
-
-<div class="form-group">
-  <label for="destination">Location</label><br>
-  <select class="form-control" name="destination" value="{{user.phone}}">
-  </select>
-</div>
-
-
-<!-- BUTTON -->
-<p>
-    <button type="submit" class="btn btn-dark">Save Trip</button>
-    <a href="/" class="btn btn-dark">
-     Cancel</a>
-</p>
+<h2>{{user.userName}}</h2>
+<h4>{{trip.origin}}</h4>
+<h4>{{trip.return}}</h4>
+<p>{{user.email}}</p>
+<p>{{user.phone}}</p>
