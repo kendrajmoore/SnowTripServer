@@ -62,9 +62,6 @@ app.post('/login', function(req, res, next) {
     });
 
 
-  //SHOW
-  app.get('/profile', function (req, res) {
-
     /*
     let user
     User.findById(req.params.id).then((foundUser) => {
@@ -79,9 +76,15 @@ app.post('/login', function(req, res, next) {
     })
     */
 
+  //SHOW
+  app.get('/profile', function (req, res) {
     User.findById(req.params.id).exec(function (err, user) {
 
-      const trip = { origon: "trip origin", return: "trip return" }
+      const trip = { origin:  Trip.Origin,
+                     return:  Trip.Return,
+                     intialTrip: Trip.initialTrip,
+                     returnTrip: Trip.returnTrip
+                   }
 
       if (req.header('Content-Type') == 'application/json') {
         return res.send({ user: user }); //=> RETURN JSON
