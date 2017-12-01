@@ -91,10 +91,8 @@ app.post('/login', function(req, res, next) {
 
   // DELETE
   app.delete('/profile/:id/delete', function (req, res) {
-    console.log('hello')
     User.findByIdAndRemove(req.params.id, function(err) {
       if (err) { return console.log(err) }
-      console.log('hello 2')
       if (req.header('Content-Type') == 'application/json') {
         return res.send({"message": "Account deleted sucessfully"}).status(200) //=> RETURN JSON
       } else {

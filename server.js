@@ -43,15 +43,10 @@ app.use(methodOverride('_method'));
 
 const checkAuth = function (req, res, next) {
   console.log("Checking authentication");
-
-  if (typeof req.cookies.nToken === 'undefined' || req.cookies.nToken === null || (!req.headers.authorization)) {
+  if ((typeof req.cookies.nToken === 'undefined' || req.cookies.nToken === null) && (!req.headers.authorization)) {
     req.user = null;
   } else {
-    if (req.headers.authorization) {
-      const token = req.headers.authorization
-    } else {
-      const token = req.cookies.nToken;
-    }
+    const token = req.headers.authorization || req.cookies.nToken;
     const decodedToken = jsonwebtoken.decode(token, { complete: true }) || {};
     req.user = decodedToken.payload; // { _id: userId }
   }

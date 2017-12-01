@@ -40,9 +40,51 @@ module.exports = function(app) {
       //else (one way trip)
         //do nothing
 
-    //CREATE
+    //CREATE()
     app.post('/trips', function (req, res) {
+      // Set trip to PST time
       req.body.departsOn = new Date(req.body.departsOn + " PST")
+      // Set trip user to be current user
+      req.body.user = req.user._id
+
+      let tripA = new Trip(req.body);
+
+      tripA.save(req.body, function(err, trip) {
+        // If there is a return trip
+        if (req.body.returnsOn) {
+          req.body.returnsOn = new Date(req.body.returnsOn + " PST")
+          let tripB = new Trip({
+            origin: req.body.destination,
+            destination: req.body.origin,
+            departsOn: req.body.returnsOn,
+            initialTrip: tripA._id,
+            user: req.user._id
+          })
+          tripB.save();
+
+          // set returnsOn on tripA
+          trip.returnsOn = req.body.returnsOn;
+          trip.save()
+        }
+
+        if (req.header('Content-Type') == 'application/json') {
+          if (err) {
+            console.log(err)
+            return res.status(400).send({ message: "There was a problem creating your trip."})
+          }
+          return res.send({ trip: trip }); //=> RETURN JSON
+        } else {
+          if (err) {
+            console.log(err)
+            return res.redirect('/trips/new')
+          }
+          return res.redirect('/trips/' + trip._id);
+        }
+      })
+    })
+
+    app.post('/trips/returns', function (req, res) {
+      // req.body.departsOn = new Date(req.body.departsOn + " PST")
       req.body.returnsOn = new Date(req.body.returnsOn + " PST")
 
       Trip.create(req.body, function(err, trip) {
@@ -57,7 +99,7 @@ module.exports = function(app) {
             console.log(err)
             return res.redirect('/trips/new')
           }
-          return res.redirect('/trips/' + trip._id);
+          return res.redirect('/trips/return/' + trip._id);
         }
       })
     })

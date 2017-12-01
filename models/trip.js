@@ -15,6 +15,8 @@ const TripSchema = new Schema({
 
     intialTrip     : { type: Schema.Types.ObjectId, ref: "Trip"},
     returnTrip     : { type: Schema.Types.ObjectId, ref: "Trip"},
+    user           : { type: Schema.Types.ObjectId, ref: 'User', required: true }
+
 
 });
 

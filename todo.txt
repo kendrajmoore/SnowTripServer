@@ -1,3 +1,8 @@
+-Associate initial and return trip
+  -Add a field trip to trip form
+  -Create initial trip and if return present create two trips
+
+
 -How to authicate with a phone Number
 -Make two Trips
 --show profile

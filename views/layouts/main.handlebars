@@ -6,7 +6,11 @@
   <link rel="stylesheet"  type="text/css" href="/layouts/style.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css" integrity="sha384-PsH8R72JQ3SOdhVi3uxftmaW6Vc51MKb0q5P2rRUpPvrszuE4W1povHYgTpBfshb" crossorigin="anonymous">
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-
+<script>
+$('.carousel').carousel({
+  interval: 2000
+})
+</script>
 </head>
 <body>
 
@@ -35,33 +39,32 @@
     </ul>
   </div>
 </nav>
-
-<!-- <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-  <div class="carousel-inner">
+<!-- <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="1"></li>
+    <li data-target="#carousel-example-generic" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner" role="listbox">
     <div class="carousel-item active">
-      <img class="d-block w-100" src="mountain.jpg" alt="First slide">
+      <img src="./mountain.jpg" alt="First slide">
     </div>
     <div class="carousel-item">
-      <img src="https://unsplash.com/photos/1RIWi9HxXrk" alt="Second slide">
+      <img src="..." alt="Second slide">
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100" src="mountain3.jpg" alt="Third slide">
+      <img src="..." alt="Third slide">
     </div>
   </div>
-  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+  <a class="left carousel-control" href="#carousel-example-generic" role="button" data-slide="prev">
+    <span class="icon-prev" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>
   </a>
-  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+  <a class="right carousel-control" href="#carousel-example-generic" role="button" data-slide="next">
+    <span class="icon-next" aria-hidden="true"></span>
     <span class="sr-only">Next</span>
   </a>
 </div> -->
-
-<br>
-<br>
-<br>
-<br>
 
   <div class="container">
     {{{body}}}
