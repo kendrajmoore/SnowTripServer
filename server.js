@@ -25,6 +25,7 @@ const hbs = exphbs.create({
 app.locals.layout = "main"
 app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
+app.use(express.static('public'));
 
 // Production Authy API key
    //authyApiKey: process.env.740c644c9857a2c750995e39dd378d22

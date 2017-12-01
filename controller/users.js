@@ -64,11 +64,29 @@ app.post('/login', function(req, res, next) {
 
   //SHOW
   app.get('/profile', function (req, res) {
+
+    /*
+    let user
+    User.findById(req.params.id).then((foundUser) => {
+      user = foundUser
+      return Trip.find({ user })
+    }).then((trips) => {
+      console.log(user)
+      console.log(trips)
+      // ...
+    }).catch((err) => {
+      console.log(err.message);
+    })
+    */
+
     User.findById(req.params.id).exec(function (err, user) {
+
+      const trip = { origon: "trip origin", return: "trip return" }
+
       if (req.header('Content-Type') == 'application/json') {
         return res.send({ user: user }); //=> RETURN JSON
       } else {
-        return res.render('user-profile', { user: user });
+        return res.render('user-form', { user, trip });
       }
     })
   })
