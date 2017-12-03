@@ -11,6 +11,7 @@ body {
 }
 
 .info img {
+  width: 70%;
   height: 600px;
 }
 .content1 {
