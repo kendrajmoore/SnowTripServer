@@ -5,13 +5,27 @@ body {
 .carousel-caption {
   color: black;
 }
+.more-info {
+  width: 50%;
+
+}
 
 .info img {
-  width: 50%;
   height: 600px;
 }
 .content1 {
   float: right;
+  width: 40%;
+  height: 600px;
+  padding-bottom: 100px;
+}
+
+.inner {
+  height: 350px;
+}
+
+.info1 img {
   width: 50%;
   height: 600px;
+  float: right;
 }
