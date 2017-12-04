@@ -1,3 +1,7 @@
+sign up button in red on top right nav bar
+
+all lowercase snow ride
+
 -Associate initial and return trip
   -Add a field trip to trip form
   -Create initial trip and if return present create two trips
