@@ -1,4 +1,6 @@
-sign up button in red on top right nav bar
+sign up button in red on top right nav bar -button light blue
+
+add quotes
 
 all lowercase snow ride
 
