@@ -1,35 +1,4 @@
-body {
-   color: black;
-}
 
-.carousel-caption {
-  color: black;
-}
-.more-info {
-  width: 50%;
-
-}
-
-.info img {
-  width: 70%;
-  height: 600px;
-}
-.content1 {
-  float: right;
-  width: 40%;
-  height: 600px;
-  padding-bottom: 100px;
-}
-
-.inner {
-  height: 350px;
-}
-
-.info1 img {
-  width: 50%;
-  height: 600px;
-  float: right;
-}
 
 @import url(font-awesome.min.css);
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic,800,800italic");
