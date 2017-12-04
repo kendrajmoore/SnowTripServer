@@ -3,13 +3,10 @@
 @import url(font-awesome.min.css);
 @import url("https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic,800,800italic");
 
-/*
-	Spectral by HTML5 UP
-	html5up.net | @ajlkn
-	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
-*/
+# one {
+  background-color: #157efe;
+}
 
-/* Reset */
 
 	html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
 		margin: 0;
@@ -2643,7 +2640,7 @@
 		}
 
 		.wrapper.style1 {
-			background-color: #21b2a6;
+			background-color: #157efe;
 			color: #c7ebe8;
 		}
 
@@ -2801,7 +2798,7 @@
 		}
 
 		.wrapper.style3 {
-			background-color: #505393;
+			background-color: #157efe;
 			color: #d3d4e4;
 		}
 
@@ -3814,3 +3811,219 @@
 	body.is-mobile.landing #footer {
 		background-color: #1d242a;
 	}
+
+/* Icon */
+
+	.icon.major {
+		border: none;
+	}
+
+		.icon.major:before {
+			font-size: 3em;
+		}
+
+/* Form */
+
+	label {
+		color: #2E3842;
+	}
+
+	input[type="text"],
+	input[type="password"],
+	input[type="email"],
+	select,
+	textarea {
+		border: solid 1px #dfdfdf;
+	}
+
+/* Button */
+
+	input[type="submit"],
+	input[type="reset"],
+	input[type="button"],
+	button,
+	.button {
+		border: solid 2px #dfdfdf;
+	}
+
+		input[type="submit"].special,
+		input[type="reset"].special,
+		input[type="button"].special,
+		button.special,
+		.button.special {
+			border: 0 !important;
+		}
+
+/* Page Wrapper + Menu */
+
+	#menu {
+		display: none;
+	}
+
+	body.is-menu-visible #menu {
+		display: block;
+	}
+
+/* Header */
+
+	#header nav > ul > li > a.menuToggle:after {
+		display: none;
+	}
+
+/* Banner + Wrapper (style4) */
+
+	#banner,
+	.wrapper.style4 {
+		-ms-behavior: url("assets/js/ie/backgroundsize.min.htc");
+	}
+
+		#banner:before,
+		.wrapper.style4:before {
+			display: none;
+		}
+
+/* Banner */
+
+	#banner .more {
+		height: 4em;
+	}
+
+		#banner .more:after {
+			display: none;
+		}
+
+/* Main */
+
+	#main > header {
+		-ms-behavior: url("assets/js/ie/backgroundsize.min.htc");
+	}
+
+		#main > header:before {
+			display: none;
+		}
+
+    /*
+	Spectral by HTML5 UP
+	html5up.net | @ajlkn
+	Free for personal and commercial use under the CCA 3.0 license (html5up.net/license)
+*/
+
+/* Spotlight */
+
+	.spotlight {
+		display: block;
+	}
+
+		.spotlight .image {
+			display: inline-block;
+			vertical-align: top;
+		}
+
+		.spotlight .content {
+			padding: 4em 4em 2em 4em ;
+			display: inline-block;
+		}
+
+		.spotlight:after {
+			clear: both;
+			content: '';
+			display: block;
+		}
+
+/* Features */
+
+	.features {
+		display: block;
+	}
+
+		.features li {
+			float: left;
+		}
+
+		.features:after {
+			content: '';
+			display: block;
+			clear: both;
+		}
+
+/* Banner + Wrapper (style4) */
+
+	#banner,
+	.wrapper.style4 {
+		background-image: url("../../images/banner.jpg");
+		background-position: center center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		position: relative;
+	}
+
+		#banner:before,
+		.wrapper.style4:before {
+			background: #000000;
+			content: '';
+			height: 100%;
+			left: 0;
+			opacity: 0.5;
+			position: absolute;
+			top: 0;
+			width: 100%;
+		}
+
+		#banner .inner,
+		.wrapper.style4 .inner {
+			position: relative;
+			z-index: 1;
+		}
+
+/* Banner */
+
+	#banner {
+		padding: 14em 0 12em 0 ;
+		height: auto;
+	}
+
+		#banner:after {
+			display: none;
+		}
+
+/* CTA */
+
+	#cta .inner header {
+		float: left;
+	}
+
+	#cta .inner .actions {
+		float: left;
+	}
+
+	#cta .inner:after {
+		clear: both;
+		content: '';
+		display: block;
+	}
+
+/* Main */
+
+	#main > header {
+		background-image: url("../../images/banner.jpg");
+		background-position: center center;
+		background-repeat: no-repeat;
+		background-size: cover;
+		position: relative;
+	}
+
+		#main > header:before {
+			background: #000000;
+			content: '';
+			height: 100%;
+			left: 0;
+			opacity: 0.5;
+			position: absolute;
+			top: 0;
+			width: 100%;
+		}
+
+		#main > header > * {
+			position: relative;
+			z-index: 1;
+		}
