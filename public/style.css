@@ -4064,3 +4064,8 @@
 .content {
   height: 340px;
 }
+
+.features img {
+  width: 150px;
+  height: 275px;
+}
