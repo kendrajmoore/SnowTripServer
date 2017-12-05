@@ -4069,3 +4069,10 @@
   width: 150px;
   height: 275px;
 }
+
+.image-float img {
+  width: 150px;
+  height: 275px;
+  float: right;
+  padding-left: -100px;
+}
