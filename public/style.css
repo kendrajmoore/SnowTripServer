@@ -537,5 +537,31 @@
 }
 
 button.btn.btn-btn  {
-  margin-left: 700px;
+  margin-left: 800px;
+  background-color: #8aebe7;
+}
+.major h2 {
+  padding-top: 150px;
+}
+
+h1.animated.jello {
+  padding-bottom: 75px;
+}
+
+section.spotlight {
+  background-color: #157efe;
+}
+
+img {
+  background-color: #157efe;
+}
+
+footer {
+  background-color: #DBDBDB;
+  padding-bottom: 100px;
+}
+
+footer li {
+  display: inline;
+  margin-left: 250px;
 }
