@@ -1,17 +1,17 @@
-sign up button in red on top right nav bar -button light blue
+sign up button in red on top right nav bar -button light blue -DONE
 
-add quotes
+add quotes-DONE
 
-all lowercase snow ride
+all lowercase snow ride-DONE
 
--Associate initial and return trip
+-Associate initial and return trip-DONE
   -Add a field trip to trip form
   -Create initial trip and if return present create two trips
 
 
--How to authicate with a phone Number
--Make two Trips
---show profile
+-How to authicate with a phone Number-DONE
+-Make two Trips-DONE
+--show profile-BROKEN
 
 -AUTH
  - sign-up responds to JSON & HTML DONE

@@ -4,18 +4,12 @@ const user = require('../models/user');
 module.exports = (app) => {
 
   // CREATE
-  app.post('/trips/:tripId/comments', (req, res) => {
-    const currentUser = req.user;
-    const postId = req.params.postId;
-    // FIND THE POST AND CREATE A NEW COMMENT
-    Trip.findById(postId).then((post) => {
+  app.post('/comments', (req, res) => {
+
       const comment = new Comment
-    });
-    post.comments.unshift(comment);
-    // ADD COMMENT TO FRONT OF ARRAY
-    post.save().then((post) => {
-     res.redirect(`/trips/` + trip._id);
-   }).catch((err) => {
+      comment.save().then((comment) => {
+      res.redirect('/profile');
+      }).catch((err) => {
         console.log(err);
     });
  });
