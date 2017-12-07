@@ -62,20 +62,6 @@ app.post('/login', function(req, res, next) {
     });
 
 
-    /*
-    let user
-    User.findById(req.params.id).then((foundUser) => {
-      user = foundUser
-      return Trip.find({ user })
-    }).then((trips) => {
-      console.log(user)
-      console.log(trips)
-      // ...
-    }).catch((err) => {
-      console.log(err.message);
-    })
-    */
-
   //SHOW
   app.get('/profile', function (req, res) {
     User.findById(req.params.id).exec(function (err, user) {

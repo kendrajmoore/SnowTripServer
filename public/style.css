@@ -183,22 +183,6 @@
       font-family: 'Source Sans Pro', sans-serif;
 		}
 
-		@media screen and (max-width: 736px) {
-
-			header.major {
-				margin: 0 0 2em 0;
-			}
-
-		}
-
-	@media screen and (max-width: 980px) {
-
-		header br {
-			display: none;
-		}
-
-	}
-
 /* Form */
 
 	form {
@@ -382,9 +366,6 @@
 			}
 
 
-
-/* Spotlight */
-
 	.spotlight {
 		-moz-align-items: center;
 		-webkit-align-items: center;
@@ -438,51 +419,6 @@
 		.spotlight:nth-child(3) {
 			background-color:#157efe;
 		}
-
-		.spotlight:nth-child(4) {
-			background-color: rgba(0, 0, 0, 0.3);
-		}
-
-		.spotlight:nth-child(5) {
-			background-color: rgba(0, 0, 0, 0.375);
-		}
-
-		.spotlight:nth-child(6) {
-			background-color: rgba(0, 0, 0, 0.45);
-		}
-
-		.spotlight:nth-child(7) {
-			background-color: rgba(0, 0, 0, 0.525);
-		}
-
-		.spotlight:nth-child(8) {
-			background-color: rgba(0, 0, 0, 0.6);
-		}
-
-		.spotlight:nth-child(9) {
-			background-color: rgba(0, 0, 0, 0.675);
-		}
-
-		.spotlight:nth-child(10) {
-			background-color: rgba(0, 0, 0, 0.75);
-		}
-
-
-
-
-
-/* Icon */
-
-	.icon.major {
-		border: none;
-	}
-
-		.icon.major:before {
-			font-size: 3em;
-		}
-
-
-
 
 	.spotlight {
 		display: block;
@@ -586,8 +522,12 @@ footer {
 footer li {
   display: inline;
   margin-left: 250px;
+  margin-top: -15px;
 }
 
+ul.icons{
+  margin-top: -16px;
+}
 .sign-up {
   width: 300px;
   height: 300px;
