@@ -8,7 +8,7 @@ module.exports = (app) => {
     //API INDEX ROUTE
     app.get('/login', function (req, res) {
       User.find(function(err, user) {
-          res.render('login');
+          res.render('login', { userLoggedIn: !!req.user });
       })
     })
 
@@ -18,7 +18,7 @@ module.exports = (app) => {
     })
 
     app.get('/sign-up', function (req, res) {
-      res.render('sign-up');
+      res.render('sign-up', { userLoggedIn: !!req.user });
     })
 
     app.post('/sign-up', (req, res) => {
@@ -47,8 +47,10 @@ module.exports = (app) => {
   //  LOGIN
 app.post('/login', function(req, res, next) {
   User.findOne({ username: req.body.username }, "+password", function (err, user) {
+    console.log(user);
     if (!user) { return res.status(401).send({ message: 'Wrong username or password' }) };
     user.comparePassword(req.body.password, function (err, isMatch) {
+      console.log(!isMatch);
       if (!isMatch) {
         return res.status(401).send({ message: 'Wrong username or password' });
       }
@@ -64,35 +66,28 @@ app.post('/login', function(req, res, next) {
 
   //SHOW
   app.get('/profile', function (req, res) {
-    User.findById(req.params.id).exec(function (err, user) {
-
-      const trip = { origin:  Trip.Origin,
-                     return:  Trip.Return,
-                     intialTrip: Trip.initialTrip,
-                     returnTrip: Trip.returnTrip
-                   }
-
+    User.findById(req.user._id).exec(function (err, user) {
       if (req.header('Content-Type') == 'application/json') {
         return res.send({ user: user }); //=> RETURN JSON
       } else {
-        return res.render('user-form', { user, trip });
+        return res.render('profile', { user: user, userLoggedIn: !!req.user  });
       }
     })
   })
 
   //UPDATE
-  app.put('/profile/:id', function (req, res) {
-    User.findByIdAndUpdate(req.params.id,  req.body, function(err, user) {
+  app.put('/profile', function (req, res) {
+    User.findByIdAndUpdate(req.user.id,  req.body, function(err, user) {
       if (err) { return console.log(err) }
-      res.redirect('/profile/' + trip._id);
+      res.redirect('/profile');
     })
   })
 
   //EDIT
-  app.get('/profile/:id/edit', function (req, res) {
-    User.findById(req.params.id, function(err, user) {
+  app.get('/profile/edit', function (req, res) {
+    User.findById(req.user.id, function(err, user) {
       if (err) { return console.log(err) }
-      res.render('user-edit', { user: user });
+      res.render('user-edit', { user: user, userLoggedIn: !!req.user });
     })
   })
 

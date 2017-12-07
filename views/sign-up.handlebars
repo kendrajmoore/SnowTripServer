@@ -1,42 +1,41 @@
-<form method="POST" action="/sign-up">
 
-  <!-- USERNAME -->
-  <div class="form-group">
-      <label for="post-title">First Name:</label>
-      <!-- name = value  firstName = "..." -->
-      <input name="firstName" class="form-control" type="text" placeholder="First name" />
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4 offset-sm-4">
+      <form method="POST" action="/sign-up">
+        <div class="form-group">
+            <label for="post-title">First Name:</label>
+            <input name="firstName" class="form-control" placeholder="First name" />
+        </div>
+        <div class="form-group">
+            <label for="post-title">Last Name:</label>
+            <input name="lastName" class="form-control" placeholder="Last name" />
+        </div>
+          <div class="form-group">
+              <label for="post-title">Email Adddress:</label>
+              <input name="email" class="form-control" placeholder="email@email.com" />
+          </div>
+          <div class="form-group">
+              <label for="post-subreddit">Phone Number:</label>
+              <input name="phone" class="form-control" type="number" placeholder=111111111/>
+          </div>
+          <div class="form-group">
+              <label for="post-title">Username:</label>
+              <input name="username" class="form-control" placeholder="username" />
+          </div>
+          <div class="form-group">
+              <label for="post-title">Password:</label>
+              <input name="password" class="form-control" type="password" placeholder="password" />
+          </div>
+
+
+
+          <!-- BUTTON -->
+          <button class="btn btn-primary" type="submit">Sign Up</button>
+          <a class="btn btn-primary" href="/" role="button">Cancel</a>
+
+      </form>
+
+    </div>
   </div>
-
-  <!-- USERNAME -->
-  <div class="form-group">
-      <label for="post-title">Last Name:</label>
-      <input name="lastName" class="form-control" type="text" value="{{lastName}}" placeholder="Last name" />
-  </div>
-
-    <!-- USERNAME -->
-    <div class="form-group">
-        <label for="post-title">Email Adddress:</label>
-        <input name="email" class="form-control" type="text" value="{{email}}" placeholder="email@email.com" />
-    </div>
-
-    <!-- PASSWORD -->
-    <div class="form-group">
-        <label for="post-subreddit">Phone Number:</label>
-        <input name="phone" class="form-control" type="Number" value={{"phone"}} placeholder=111111111/>
-    </div>
-    <div class="form-group">
-        <label for="post-title">User Name:</label>
-        <input name="userName" class="form-control" type="username" value="{{userName}}" placeholder="username" />
-    </div>
-    <div class="form-group">
-        <label for="post-title">Password:</label>
-        <input name="password" class="form-control" type="password" value="{{password}}" placeholder="password" />
-    </div>
-
-
-
-    <!-- BUTTON -->
-    <button class="btn btn-primary" type="submit">Sign Up</button>
-    <a class="btn btn-primary" href="/" role="button">Cancel</a>
-
-</form>
+</div>

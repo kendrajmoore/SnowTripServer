@@ -10,7 +10,7 @@ module.exports = function(app) {
         if (err) {
           console.log(err)
         }
-          res.send({trips: trips});
+          res.send({trips: trips, userLoggedIn: !!req.user });
       })
     })
 
@@ -19,17 +19,17 @@ module.exports = function(app) {
       const now = new Date();
       Trip.find({ departsOn: { $gt: now } }).sort('departsOn desc').exec(function(err, trips) {
         if (err) { return console.log(err) }
-         res.render('trips-index', {trips: trips});
+         res.render('trips-index', {trips: trips, userLoggedIn: !!req.user });
       })
     })
 
     // NEW
     app.get('/trips/new', function (req, res) {
-      res.render('trips-new', { timesOfDay: Trip.timesOfDay() });
+      res.render('trips-new', { timesOfDay: Trip.timesOfDay(), userLoggedIn: !!req.user  });
     })
 
     app.get('/return', function (req, res) {
-      res.render('return', { timesOfDay: Trip.timesOfDay() });
+      res.render('return', { timesOfDay: Trip.timesOfDay(), userLoggedIn: !!req.user  });
     })
 
 
@@ -72,7 +72,7 @@ module.exports = function(app) {
             console.log(err)
             return res.status(400).send({ message: "There was a problem creating your trip."})
           }
-          return res.send({ trip: trip }); //=> RETURN JSON
+          return res.send({ trip: trip, userLoggedIn: !!req.user }); //=> RETURN JSON
         } else {
           if (err) {
             console.log(err)
@@ -93,7 +93,7 @@ module.exports = function(app) {
             console.log(err)
             return res.status(400).send({ message: "There was a problem creating your trip."})
           }
-          return res.send({ trip: trip }); //=> RETURN JSON
+          return res.send({ trip: trip, userLoggedIn: !!req.user }); //=> RETURN JSON
         } else {
           if (err) {
             console.log(err)
@@ -110,7 +110,7 @@ module.exports = function(app) {
         if (req.header('Content-Type') == 'application/json') {
           return res.send({ trip: trip }); //=> RETURN JSON
         } else {
-          return res.render('trips-show', {trip: trip});
+          return res.render('trips-show', { trip: trip, userLoggedIn: !!req.user });
         }
       })
     })
@@ -130,7 +130,7 @@ module.exports = function(app) {
     app.get('/trips/:id/edit', function (req, res) {
       Trip.findById(req.params.id, function(err, trip) {
         if (err) { return console.log(err) }
-        res.render('trips-edit', { trip: trip, timesOfDay: Trip.timesOfDay() });
+        res.render('trips-edit', { trip: trip, timesOfDay: Trip.timesOfDay(), userLoggedIn: !!req.user });
       })
     })
 

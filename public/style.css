@@ -1,3 +1,6 @@
+.navbar {
+  margin-bottom:20px;
+}
 
 
 # one {
@@ -184,24 +187,6 @@
 		}
 
 /* Form */
-
-	form {
-		margin: 0 0 2em 0;
-	}
-
-	label {
-		color: #fff;
-		display: block;
-		font-size: 0.9em;
-		font-weight: 600;
-		margin: 0 0 1em 0;
-	}
-
-
-
-
-
-
 /* Table */
 
 	.table-wrapper {
