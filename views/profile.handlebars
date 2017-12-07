@@ -1,7 +1,12 @@
-<h2>{{user.username}}</h2>
-<p>{{user.email}}</p>
-<p>{{user.phone}}</p>
 
-<a href="/trips/new" class="btn btn-primary">New Trip</a>
+<div class="row">
+  <div class="col-sm-4 offset-sm-4">
+    <p>{{user.username}}</p>
+    <p>{{user.email}}</p>
+    <p>{{user.phone}}</p>
 
-<a href="/comment">Leave a comment</a>
+      <a href="/trips/new" class="btn btn-primary">New Trip</a>
+
+      <a href="/comment" class="btn btn-primary">Leave a comment</a>
+    </div>
+  </div>
