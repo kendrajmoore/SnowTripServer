@@ -27,8 +27,7 @@ app.engine('handlebars', hbs.engine);
 app.set('view engine', 'handlebars');
 app.use(express.static('public'));
 
-// Production Authy API key
-   //authyApiKey: process.env.740c644c9857a2c750995e39dd378d22
+
 
 // MONGOOSE
 const mongoose = require('mongoose');
@@ -61,6 +60,7 @@ app.use(checkAuth)
 //ROUTES
 require('./controller/trips.js')(app);
 require('./controller/users.js')(app);
+require('./controller/comments.js')(app);
 
 app.listen(process.env.PORT || 3000, function () {
   console.log('snow ride app listening on port ' + process.env.PORT)

@@ -1,7 +1,7 @@
 <li>
-<p>{{this.content}} <span> Name: {{user.username}}</span></p>
-<p>Created: {{this.createdAt}}</p>
-<form action="/posts/{{this.postId}}/comments/{{this.id}}/replies/new" method="POST">
+<p>{{this.content}}</p>
+<p> Name: {{user.username}} </p>
+<form action="/profile/comments" method="POST">
   <textarea class='form-control' name="content" placeholder="Comment"></textarea>
   <div class="text-right">
     <button type="submit">Save</button>

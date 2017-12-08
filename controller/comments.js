@@ -2,19 +2,15 @@ const Trip = require('../models/trip');
 const User = require('../models/user');
 
 module.exports = (app) => {
-  // INSTANTIATE INSTANCE OF MODEL
-  const comment = new Comment(req.body)
+  //new
+    app.get('profile/comments/new', function (req, res) {
+      console.log(hi)
+      res.render('comments-new', {});
+    })
 
-  // SAVE INSTANCE OF Comment MODEL TO DB
-  comment.save().then((comment) => {
-    return User.findById(req.params.userId)
-  }).then((user) => {
-    user.comments.unshift(comment)
-    return user.save()
-  }).then((user) => {
-    res.redirect(`/`)
-  }).catch((err) => {
-    console.log(err)
-  })
-
+    app.post('/profile/comments', function (req,res) {
+      Comment.create(req.body, function(err, comment) {
+        res.redirect('/');
+      })
+    })
 }
