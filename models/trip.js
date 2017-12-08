@@ -12,6 +12,7 @@ const TripSchema = new Schema({
 
     returnsOn      : { type:Date, required: false },
     returnsInThe   : { type: String, required: false},
+    
 
     intialTrip     : { type: Schema.Types.ObjectId, ref: "Trip"},
     returnTrip     : { type: Schema.Types.ObjectId, ref: "Trip"},
