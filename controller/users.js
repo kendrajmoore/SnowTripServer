@@ -2,6 +2,7 @@
 const jwt = require('jsonwebtoken');
 const User = require('../models/user.js');
 const Trip = require('../models/trip.js');
+const Comment = require('../models/comment')
 
 
 module.exports = (app) => {

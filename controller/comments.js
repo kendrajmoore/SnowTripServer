@@ -13,13 +13,13 @@ module.exports = (app) => {
 
     // NEW
     app.get('/comments/new', function (req, res) {
-      const comment = new comment
       res.render('comments-new', {});
     })
 
     app.post('/comments', function (req, res) {
       Comment.create(req.body, function(err, comment) {
         res.redirect('/comments/' + comment._id);
+        console.log(comment._id)
       })
     })
 

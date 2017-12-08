@@ -1,0 +1,24 @@
+<div class="form-group">
+  <label for="reason">Reason</label><br>
+  <select class="form-control" name="reason" value="{{comment.reason}}">
+      <option>Complain</option>
+      <option>Positive</option>
+      <option>Negative</option>
+      <option>Stalker</option>
+  </select>
+  <div class="form-group">
+      <label for="post-title">Email Adddress:</label>
+      <input name="email" class="form-control" placeholder="email@email.com" />
+  </div>
+  <div class="form-group">
+      <label for="summary">Summary</label>
+      <textarea name="summary" class="form-control" value="{{comment.summary}}" placeholder="summary"></textarea>
+    </div>
+
+</div>
+<p>
+    <button type="submit" class="btn btn-primary">Save Comment</button>
+    <button type="submit" class="btn btn-primary">View Comment</button>
+    <button onclick="location.href='/comments' class="btn btn-primary">
+     Cancel</button>
+</p>

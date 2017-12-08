@@ -1,0 +1,19 @@
+<h1>Comments</h1>
+
+<a href="/comments/new">New Comment</a>
+<br>
+{{#each comments}}
+<div class="col-sm-3">
+    <h3>{{comment.reason}}</h3></a>
+    <small>{{comment.email}}</small>
+    <p>{{comment.summary}}</p>
+
+
+    <button onclick="location.href='/comments/{{this._id}}/edit'" type="button">
+     Edit</button>
+    <form method="POST" action="/comments/{{this._id}}?_method=DELETE">
+        <button type="submit">Delete</button>
+    </form>
+  <hr>
+</div>
+{{/each}}
