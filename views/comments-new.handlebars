@@ -1,12 +1,23 @@
-<div class="">
-  <div class="">
-    <form class="form" action="/comments" method="post">
-      <p class="">
-        <textarea name="content" class="" id="reply-content" placeholder="Reply"></textarea>
-      </p>
-      <p class='form-submit-container'>
-        <input type="submit">
-      </p>
+<div class="row">
+  <div class="col-sm-4 col-sm-offset-4">
+    <form action="/comments" method="POST">
+      <legend>New Comments</legend>
+      <div class="form-group">
+        <label for="post-title">Title</label>
+        <input type="text" name="title" class="form-control" id="post-title" placeholder="Title">
+        <input type="subreddit" class="form-control" id="post-subreddit" placeholder="Subreddit">
+      </div>
+      <div class="form-group">
+        <label for="post-url">Url</label>
+        <input type="url" name="url" class="form-control" id="post-url" placeholder="https://www.redditClone.com">
+      </div>
+      <div class="form-group">
+        <label for="post-summary">Summary</label>
+        <textarea name="summary" class="form-control" id="post-summary" placeholder="Title"></textarea>
+      </div>
+      <div class='text-right'>
+        <button type="submit" class="btn btn-primary">Reply</button>
+      </div>
     </form>
   </div>
 </div>
