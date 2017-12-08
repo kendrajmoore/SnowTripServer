@@ -1,7 +1,3 @@
-.navbar {
-  margin-bottom:20px;
-}
-
 
 # one {
   background-color: #157efe;
@@ -454,6 +450,7 @@
 .carousel-caption h1{
   margin-bottom: 400px;
   font-family: 'Source Sans Pro', sans-serif;
+  font-size: 2em;
 }
 
 .content {
@@ -489,6 +486,7 @@ button.btn.btn-btn  {
 h1.animated.jello {
   padding-bottom: 75px;
   font-family: 'Source Sans Pro', sans-serif;
+  color: black;
 }
 
 section.spotlight {
@@ -501,7 +499,6 @@ img {
 
 footer {
   background-color: #DBDBDB;
-  padding-bottom: 100px;
 }
 
 footer li {
@@ -522,4 +519,12 @@ ul.icons{
 div.container a {
   background-color: #157efe;
   color: white;
+}
+
+div.inner h2 {
+  color: black;
+}
+
+div.inner {
+  padding-bottom: 50px;
 }

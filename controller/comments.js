@@ -6,7 +6,7 @@ module.exports = (app) => {
 
     app.get('/comments', function (req, res) {
       Comment.find(function(err, comments) {
-        res.render('comments-index', {comments: comments});
+        res.render('comments-index', {comments: comments, userLoggedIn: !!req.user });
       })
     })
 
@@ -25,7 +25,7 @@ module.exports = (app) => {
 
     app.get('/comments/:id', function (req, res) {
       Comment.findById(req.params.id).exec(function (err, comment) {
-        res.render('comments-show', {comment: comment});
+        res.render('comments-show', {comment: comment, userLoggedIn: !!req.user });
       })
     })
 
@@ -37,7 +37,7 @@ module.exports = (app) => {
     })
     app.get('/comments/:id/edit', function (req, res) {
       Comment.findById(req.params.id, function(err, comment) {
-        res.render('comments-edit', {comment: comment});
+        res.render('comments-edit', {comment: comment, userLoggedIn: !!req.user });
       })
     })
     app.delete('/comments/:id', function (req, res) {
