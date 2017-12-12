@@ -9,6 +9,9 @@ all lowercase snow ride-DONE
   -Create initial trip and if return present create two trips
 
 
+  require('locus');
+  eval(locus);
+
 -How to authicate with a phone Number-DONE
 -Make two Trips-DONE
 --show profile-BROKEN

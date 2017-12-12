@@ -11,19 +11,17 @@ const TripSchema = new Schema({
     departsInThe   : { type: String, required: false},
 
     returnsOn      : { type:Date, required: false },
-    returnsInThe   : { type: String, required: false},
-    
+    returnsInThe   : { type: String, required: false },
 
-    intialTrip     : { type: Schema.Types.ObjectId, ref: "Trip"},
-    returnTrip     : { type: Schema.Types.ObjectId, ref: "Trip"},
+    intialTrip     : { type: Schema.Types.ObjectId, ref: "Trip" },
+    returnTrip     : { type: Schema.Types.ObjectId, ref: "Trip" },
     user           : { type: Schema.Types.ObjectId, ref: 'User', required: true }
-
 
 });
 
 const myDate = new Date();
-const myEpoch = myDate.getTime()/1000.0;
-console.log("I am " + myEpoch + " UNIXtime");
+const myEpoch = myDate.getTime() / 1000.0;
+// console.log("I am " + myEpoch + " UNIXtime");
 
 TripSchema.statics.timesOfDay = function() {
   return [ "Early Morning", "Morning", "Noon", "Afternoon", "Evening", "Late"];

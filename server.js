@@ -43,20 +43,20 @@ app.use(cookieParser())
 app.use(methodOverride('_method'));
 
 
-// const checkAuth = function (req, res, next) {
-//   console.log("Checking authentication");
-//   if ((typeof req.cookies.nToken === 'undefined' || req.cookies.nToken === null) && (!req.headers.authorization)) {
-//     req.user = null;
-//   } else {
-//     const token = req.headers.authorization || req.cookies.nToken;
-//     const decodedToken = jsonwebtoken.decode(token, { complete: true }) || {};
-//     req.user = decodedToken.payload; // { _id: userId }
-//   }
-//
-//   next();
-// }
-//
-// app.use(checkAuth)
+const checkAuth = function (req, res, next) {
+  console.log("Checking authentication");
+  if ((typeof req.cookies.nToken === 'undefined' || req.cookies.nToken === null) && (!req.headers.authorization)) {
+    req.user = null;
+  } else {
+    const token = req.headers.authorization || req.cookies.nToken;
+    const decodedToken = jsonwebtoken.decode(token, { complete: true }) || {};
+    req.user = decodedToken.payload; // { _id: userId }
+  }
+
+  next();
+}
+
+app.use(checkAuth)
 
 
 //ROUTES

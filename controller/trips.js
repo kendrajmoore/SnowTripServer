@@ -7,13 +7,11 @@ module.exports = function(app) {
         // API INDEX ROUTE
         //
         app.get('/trips', function (req, res) {
-          Trip.findById(function(err, trips) {
+          Trip.find(function(err, trips) {
             if (err) {
               console.log(err)
             }
-              res.send({trips: trips});
-
-                // , userLoggedIn: !!req.user });
+              res.send({ trips: trips, userLoggedIn: !!req.user });
           })
         })
 
@@ -22,23 +20,17 @@ module.exports = function(app) {
           const now = new Date();
           Trip.find({ departsOn: { $gt: now } }).sort('departsOn desc').exec(function(err, trips) {
             if (err) { return console.log(err) }
-             res.render('trips-index', { trips: trips });
-
-               // , userLoggedIn: !!req.user });
+             res.render('trips-index', { trips: trips, userLoggedIn: !!req.user });
           })
         })
 
         // NEW
         app.get('/trips/new', function (req, res) {
-          res.render('trips-new', { timesOfDay: Trip.timesOfDay(),
-
-            // userLoggedIn: !!req.user  });
+          res.render('trips-new', { timesOfDay: Trip.timesOfDay(), userLoggedIn: !!req.user  });
         })
 
         app.get('/return', function (req, res) {
-          res.render('return', { timesOfDay: Trip.timesOfDay() });
-
-            // userLoggedIn: !!req.user  });
+          res.render('return', { timesOfDay: Trip.timesOfDay(), userLoggedIn: !!req.user  });
         })
 
         // : Display trips
@@ -96,9 +88,7 @@ module.exports = function(app) {
                 console.log(err)
                 return res.status(400).send({ message: "There was a problem creating your trip."})
               }
-              return res.send({ trip: trip });
-
-                // userLoggedIn: !!req.user }); //=> RETURN JSON
+              return res.send({ trip: trip, userLoggedIn: !!req.user }); //=> RETURN JSON
             } else {
               if (err) {
                 console.log(err)
@@ -121,9 +111,7 @@ module.exports = function(app) {
                 console.log(err)
                 return res.status(400).send({ message: "There was a problem creating your trip."})
               }
-              return res.send({ trip: trip });
-
-                // userLoggedIn: !!req.user }); //=> RETURN JSON
+              return res.send({ trip: trip, userLoggedIn: !!req.user }); //=> RETURN JSON
             } else {
               if (err) {
                 console.log(err)
@@ -145,8 +133,7 @@ module.exports = function(app) {
             if (req.header('Content-Type') == 'application/json') {
               return res.send({ trip: trip }); //=> RETURN JSON
             } else {
-              return res.render('trips-show', { trip: trip });
-                // , userLoggedIn: !!req.user });
+              return res.render('trips-show', { trip: trip, userLoggedIn: !!req.user });
             }
           })
         })
@@ -181,8 +168,4 @@ module.exports = function(app) {
             }
           })
         })
-
-      })
-
-
-};
+}

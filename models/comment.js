@@ -5,11 +5,8 @@ const    Schema = mongoose.Schema;
 const CommentSchema = new Schema({
   content            : { type: String},
   comment          : [this],
-  reason           : { type: String},
-  summary          : { type: String}
-
-
-
+  reason           : { type: String },
+  summary          : { type: String }
 });
 
 module.exports = mongoose.model('Comment', CommentSchema);

@@ -1,5 +1,16 @@
 
 /* Check me # ??? */
+
+/*
+
+body {
+  color:white;
+  font-family: 'Source Sans Pro', sans-serif;
+  font-size: 18px;
+}
+
+*/
+
 # one {
   background-color: #157efe;
 }
@@ -135,7 +146,8 @@
 
 /* Section/Article */
 
-	section.special, article.special {
+	section.special,
+  article.special {
 		text-align: center;
 	}
 
@@ -171,7 +183,9 @@ header h4 + p
 		margin: 0 0 3.5em 0;
 	}
 
-		header.major h2, header.major h3, header.major h4, header.major h5, header.major h6 {
+		header.major h2,
+    header.major h3,
+    header.major h4, header.major h5, header.major h6 {
 			border-bottom: solid 2px #fff;
 			display: inline-block;
 			padding-bottom: 1em;
@@ -192,7 +206,7 @@ header h4 + p
       font-family: 'Source Sans Pro', sans-serif;
 		}
 
-/* Form */
+/* Form <-- Which form or table */
 /* Table */
 
 	.table-wrapper {
