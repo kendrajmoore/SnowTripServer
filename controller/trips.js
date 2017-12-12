@@ -48,7 +48,7 @@ module.exports = function(app) {
           // Set trip to PST time
           req.body.departsOn = new Date(req.body.departsOn + " PST")
           // Set trip user to be current user
-          req.body.user = req.user._id
+          // req.body.user = req.user._id
 
           let tripA = new Trip(req.body);
 
