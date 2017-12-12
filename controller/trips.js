@@ -33,7 +33,7 @@ module.exports = function(app) {
       res.render('return', { timesOfDay: Trip.timesOfDay(), userLoggedIn: !!req.user  });
     })
 
-
+    // TODO: Display trips
     //trips#create
       //departsOn, origin, destination => save tripA
       //if returnsOn is present?
@@ -61,11 +61,26 @@ module.exports = function(app) {
             initialTrip: tripA._id,
             user: req.user._id
           })
+
           tripB.save();
 
           // set returnsOn on tripA
           trip.returnsOn = req.body.returnsOn;
           trip.save()
+
+          // --------------------
+          // const tripBPromise = tripB.save();
+          //
+          // // set returnsOn on tripA
+          // trip.returnsOn = req.body.returnsOn;
+          // const tripAPromise = trip.save()
+          // Promise.all([tripAPromise, tripBPromise]).then((values) => {
+          //   // values => [tripA, tripB]
+          //   // ...
+          // }).catch((err) => {
+          //   console.log(err.message)
+          // })
+          // --------------------
         }
 
         if (req.header('Content-Type') == 'application/json') {
@@ -84,10 +99,12 @@ module.exports = function(app) {
       })
     })
 
+    //
     app.post('/trips/returns', function (req, res) {
       // req.body.departsOn = new Date(req.body.departsOn + " PST")
       req.body.returnsOn = new Date(req.body.returnsOn + " PST")
 
+      // Consider new Trip() consider using promise here.
       Trip.create(req.body, function(err, trip) {
         if (req.header('Content-Type') == 'application/json') {
           if (err) {
@@ -108,6 +125,11 @@ module.exports = function(app) {
     // SHOW
     app.get('/trips/:id', function (req, res) {
       Trip.findById(req.params.id).exec(function (err, trip) {
+
+        // a == b <- same values
+        // a === b <- same value same type
+        // Consider === over == most of the time.
+
         if (req.header('Content-Type') == 'application/json') {
           return res.send({ trip: trip }); //=> RETURN JSON
         } else {
@@ -146,6 +168,4 @@ module.exports = function(app) {
         }
       })
     })
-
-
 };

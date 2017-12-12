@@ -8,9 +8,11 @@ const Comment = require('../models/comment')
 module.exports = (app) => {
     //API INDEX ROUTE
     app.get('/login', function (req, res) {
-      User.find(function(err, user) {
-          res.render('login', { userLoggedIn: !!req.user });
-      })
+      // User.find(function(err, user) {
+          res.render('login');
+
+          // { userLoggedIn: !!req.user });
+      // })
     })
 
     app.get('/logout', (req, res) => {
@@ -44,26 +46,31 @@ module.exports = (app) => {
       });
     });
 
+    //LOGIN
+
+    app.post("/login", function(req, rest, next) {
+      res.redirect('/');
+    })
+
 
   //  LOGIN
-app.post('/login', function(req, res, next) {
-  User.findOne({ username: req.body.username }, "+password", function (err, user) {
-    console.log(user);
-    if (!user) { return res.status(401).send({ message: 'Wrong username or password' }) };
-    user.comparePassword(req.body.password, function (err, isMatch) {
-      console.log(!isMatch);
-      if (!isMatch) {
-        return res.status(401).send({ message: 'Wrong username or password' });
-      }
-
-      const token = jwt.sign({ _id: user._id }, process.env.SECRET, { expiresIn: "60 days" });
-      res.cookie('nToken', token, { maxAge: 900000, httpOnly: true });
-
-          res.redirect('/');
-        });
-      })
-    });
-
+// app.post('/login', function(req, res, next) {
+//   User.findOne({ username: req.body.username }, "+password", function (err, user) {
+//     console.log(user);
+//     if (!user) { return res.status(401).send({ message: 'Wrong username or password' }) };
+//     user.comparePassword(req.body.password, function (err, isMatch) {
+//       console.log(!isMatch);
+//       if (!isMatch) {
+//         return res.status(401).send({ message: 'Wrong username or password' });
+//       }
+//
+//       const token = jwt.sign({ _id: user._id }, process.env.SECRET, { expiresIn: "60 days" });
+//       res.cookie('nToken', token, { maxAge: 900000, httpOnly: true });
+//
+//           res.redirect('/');
+//         });
+//       })
+//     });
 
   //SHOW
   app.get('/profile', function (req, res) {
@@ -97,7 +104,7 @@ app.post('/login', function(req, res, next) {
     User.findByIdAndRemove(req.params.id, function(err) {
       if (err) { return console.log(err) }
       if (req.header('Content-Type') == 'application/json') {
-        return res.send({"message": "Account deleted sucessfully"}).status(200) //=> RETURN JSON
+        return res.send({ "message": "Account deleted sucessfully" }).status(200) //=> RETURN JSON
       } else {
         return res.redirect('/');
       }

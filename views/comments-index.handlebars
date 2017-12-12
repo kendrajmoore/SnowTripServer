@@ -4,9 +4,9 @@
 <br>
 {{#each comment}}
 <div class="col-sm-3">
-    <p>{{comment.reason}}</p>
-    <p>{{comment.email}}</p>
-    <p>{{comment.summary}}</p>
+    <p>{{this.reason}}</p>
+    <p>{{this.email}}</p>
+    <p>{{this.summary}}</p>
 
 
     <button onclick="location.href='/comments/{{this._id}}/edit'" type="button">
