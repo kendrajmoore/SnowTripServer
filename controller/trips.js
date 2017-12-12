@@ -11,7 +11,9 @@ module.exports = function(app) {
             if (err) {
               console.log(err)
             }
-              res.send({ trips: trips, userLoggedIn: !!req.user });
+              res.send({ trips: trips });
+
+                // userLoggedIn: !!req.user });
           })
         })
 
@@ -130,7 +132,7 @@ module.exports = function(app) {
               if (req.header('Content-Type') == 'application/json') {
                 return res.send({ trip: trip }); //=> RETURN JSON
               } else {
-                return res.render('trips-show', { trip: trip, userLoggedIn: !!req.user, comments: comments });
+                return res.render('trips-show', { trip: trip, userLoggedIn: !!req.user, reviews: comments });
               }
             });
           })
