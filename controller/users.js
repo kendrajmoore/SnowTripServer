@@ -48,7 +48,7 @@ module.exports = (app) => {
 
     //LOGIN
 
-    app.post("/login", function(req, rest, next) {
+    app.post("/login", function(req, res, next) {
       res.redirect('/');
     })
 
@@ -78,7 +78,10 @@ module.exports = (app) => {
       if (req.header('Content-Type') == 'application/json') {
         return res.send({ user: user }); //=> RETURN JSON
       } else {
-        return res.render('profile', { user: user, userLoggedIn: !!req.user  });
+        return res.render('profile', { user: user });
+
+           //
+           // userLoggedIn: !!req.user  });
       }
     })
   })
