@@ -31,9 +31,9 @@ module.exports = function(app) {
           res.render('trips-new', { timesOfDay: Trip.timesOfDay(), userLoggedIn: !!req.user  });
         })
 
-        app.get('/return', function (req, res) {
-          res.render('return', { timesOfDay: Trip.timesOfDay(), userLoggedIn: !!req.user  });
-        })
+        // app.get('/return', function (req, res) {
+        //   res.render('return', { timesOfDay: Trip.timesOfDay(), userLoggedIn: !!req.user  });
+        // })
 
         // : Display trips
         //trips#create
@@ -47,82 +47,45 @@ module.exports = function(app) {
         app.post('/trips', function (req, res) {
           // Set trip to PST time
           req.body.departsOn = new Date(req.body.departsOn + " PST")
+          req.body.returnsOn = new Date(req.body.returnsOn + " PST")
           // Set trip user to be current user
           // req.body.user = req.user._id
 
-          let tripA = new Trip(req.body);
-
-          tripA.save(req.body, function(err, trip) {
-            // If there is a return trip
-            if (req.body.returnsOn) {
-              req.body.returnsOn = new Date(req.body.returnsOn + " PST")
-              let tripB = new Trip({
-                origin: req.body.destination,
-                destination: req.body.origin,
-                departsOn: req.body.returnsOn,
-                initialTrip: tripA._id,
-                user: req.user._id
-              })
-
-              tripB.save();
-
-              // set returnsOn on tripA
-              trip.returnsOn = req.body.returnsOn;
+          let trip = new Trip(req.body);
+          //
+          // tripA.save(req.body, function(err, trip) {
+          //   // If there is a return trip
+          //   if (req.body.returnsOn) {
+          //     req.body.returnsOn = new Date(req.body.returnsOn + " PST")
+          //     let tripB = new Trip({
+          //       origin: req.body.destination,
+          //       destination: req.body.origin,
+          //       departsOn: req.body.returnsOn,
+          //       initialTrip: tripA._id,
+          //       // user: req.user._id
+          //     })
+          //
+          //     tripB.save();
+          //
+          //     // set returnsOn on tripA
+          //     trip.returnsOn = req.body.returnsOn;
               trip.save()
 
-              // --------------------
-              // const tripBPromise = tripB.save();
-              //
-              // // set returnsOn on tripA
-              // trip.returnsOn = req.body.returnsOn;
-              // const tripAPromise = trip.save()
-              // Promise.all([tripAPromise, tripBPromise]).then((values) => {
-              //   // values => [tripA, tripB]
-              //   // ...
-              // }).catch((err) => {
-              //   console.log(err.message)
-              // })
-              // --------------------
-            }
+              if (req.header('Content-Type') == 'application/json') {
+                if (err) {
+                  console.log(err)
+                  return res.status(400).send({ message: "There was a problem creating your trip."})
+                }
+                return res.send({ trip: trip, userLoggedIn: !!req.user }); //=> RETURN JSON
+              } else {
+                if (err) {
+                  console.log(err)
+                  return res.redirect('/trips/new')
+                }
+                return res.redirect('/trips/' + trip._id);
+              }
+            })
 
-            if (req.header('Content-Type') == 'application/json') {
-              if (err) {
-                console.log(err)
-                return res.status(400).send({ message: "There was a problem creating your trip."})
-              }
-              return res.send({ trip: trip, userLoggedIn: !!req.user }); //=> RETURN JSON
-            } else {
-              if (err) {
-                console.log(err)
-                return res.redirect('/trips/new')
-              }
-              return res.redirect('/trips/' + trip._id);
-            }
-          })
-        })
-
-        //
-        app.post('/trips/returns', function (req, res) {
-          // req.body.departsOn = new Date(req.body.departsOn + " PST")
-          req.body.returnsOn = new Date(req.body.returnsOn + " PST")
-
-          // Consider new Trip() consider using promise here.
-          Trip.create(req.body, function(err, trip) {
-            if (req.header('Content-Type') == 'application/json') {
-              if (err) {
-                console.log(err)
-                return res.status(400).send({ message: "There was a problem creating your trip."})
-              }
-              return res.send({ trip: trip, userLoggedIn: !!req.user }); //=> RETURN JSON
-            } else {
-              if (err) {
-                console.log(err)
-                return res.redirect('/trips/new')
-              }
-              return res.redirect('/trips/return/' + trip._id);
-            }
-          })
-        })
 
         // SHOW
         app.get('/trips/:id', function (req, res) {
@@ -134,7 +97,7 @@ module.exports = function(app) {
               } else {
                 return res.render('trips-show', { trip: trip, userLoggedIn: !!req.user, reviews: comments });
               }
-            });
+            })
           })
         })
 
@@ -168,4 +131,4 @@ module.exports = function(app) {
             }
           })
         })
-}
+   }
