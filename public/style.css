@@ -65,7 +65,7 @@ body {
 	}
 
 	h1, h2, h3, h4, h5, h6 {
-		color: #fff;
+		/*color: #fff;*/
 		font-weight: 800;
 		letter-spacing: 0.225em;
 		line-height: 1em;
@@ -540,10 +540,10 @@ ul.icons{
 
 }
 
-div.container a {
+/*div.container a {
   background-color: #157efe;
   color: white;
-}
+}*/
 
 div.inner h2 {
   color: black;

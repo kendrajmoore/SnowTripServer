@@ -3,7 +3,7 @@ const User = require('../models/user');
 const Comment = require('../models/comment')
 
 module.exports = (app) => {
-    // 
+    //
     app.get('/comments', function (req, res) {
       Comment.find(function(err, comments) {
         res.render('comments-index', {comments: comments, userLoggedIn: !!req.user });
@@ -11,15 +11,17 @@ module.exports = (app) => {
     })
 
     // NEW
-    app.get('/comments/new', function (req, res) {
-      res.render('comments-new', {});
+    app.get('/users/:userId/trips/:tripId/reviews/new', function (req, res) {
+
+      res.render('comments-new', { tripId: req.params.tripId, userLoggedIn: !!req.user });
     })
 
-    //
-    app.post('/comments', function (req, res) {
+    // CREATE
+    app.post('/trips/:tripId/comments', function (req, res) {
+      req.body.user = req.user._id
+
       Comment.create(req.body, function(err, comment) {
-        res.redirect('/comments/' + comment._id);
-        console.log(comment._id)
+        res.redirect('/trips/' + req.params.tripId);
       })
     })
 

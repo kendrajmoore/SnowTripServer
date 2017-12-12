@@ -4,9 +4,9 @@ const    Schema = mongoose.Schema;
 //create comment model
 const CommentSchema = new Schema({
   content            : { type: String},
-  comment          : [this],
   reason           : { type: String },
-  summary          : { type: String }
+  summary          : { type: String },
+  user             : { type: Schema.Types.ObjectId, ref: 'User', required: true }
 });
 
 module.exports = mongoose.model('Comment', CommentSchema);

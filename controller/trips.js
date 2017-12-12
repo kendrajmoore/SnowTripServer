@@ -46,7 +46,7 @@ module.exports = function(app) {
           // Set trip to PST time
           req.body.departsOn = new Date(req.body.departsOn + " PST")
           // Set trip user to be current user
-          // req.body.user = req.user._id
+          req.body.user = req.user._id
 
           let tripA = new Trip(req.body);
 
@@ -125,16 +125,14 @@ module.exports = function(app) {
         // SHOW
         app.get('/trips/:id', function (req, res) {
           Trip.findById(req.params.id).exec(function (err, trip) {
-
-            // a == b <- same values
-            // a === b <- same value same type
-            // Consider === over == most of the time.
-
-            if (req.header('Content-Type') == 'application/json') {
-              return res.send({ trip: trip }); //=> RETURN JSON
-            } else {
-              return res.render('trips-show', { trip: trip, userLoggedIn: !!req.user });
-            }
+            // trip.user //=> user._id
+            Comment.find({user: trip.user}).exec(function (err, comments) {
+              if (req.header('Content-Type') == 'application/json') {
+                return res.send({ trip: trip }); //=> RETURN JSON
+              } else {
+                return res.render('trips-show', { trip: trip, userLoggedIn: !!req.user, comments: comments });
+              }
+            });
           })
         })
 

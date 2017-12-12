@@ -27,24 +27,21 @@
       </li>
     </ul>
     <ul class="navbar-nav">
-      {{!-- {{#if userLoggedIn}} --}}
+      {{#if userLoggedIn}}
         <li class="nav-item only-when-logged-in">
           <a class="nav-link" href="/profile">Profile</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="/comments">Comment</a>
-        </li>
-        <li class="nav-item">
           <a class="nav-link" href="/logout">Logout</a>
         </li>
-      {{!-- {{else}} --}}
+      {{else}}
         <li class="nav-item">
           <a class="nav-link" href="/login">Login</a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="/sign-up">Sign Up</a>
         </li>
-      {{!-- {{/if}} --}}
+      {{/if}}
     </ul>
   </div>
 </nav>

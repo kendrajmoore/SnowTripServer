@@ -3,17 +3,20 @@
 
 {{#if userLoggedIn}}
 <div class="container">
+  <br>
+  <div class="text-right">
+    <a href="/trips/new" class="btn btn-primary">New Trip</a>
+  </div>
   <div class="row">
     <div class="col-sm-6 col-sm-offset-3">
       <div class="list-group">
-        <h2> Curent Available Trips </h2>
+        <h2> Current Available Trips </h2>
         {{#each trips}}
           <a href="/trips/{{this._id}}" class="list-group-item">
             San Francisco => Tahoe
             <h4>{{formatTime this.departsOn "dddd, MMM D"}} - {{this.departsInThe}}</h4>
             Tahoe => San Francisco
             <h4>{{formatTime this.returnsOn "dddd, MMM D"}} - {{this.returnsInThe}}</h4>
-              <a href="/trips/new">New Trip</a>
           </a>
         {{/each}}
 

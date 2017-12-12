@@ -6,5 +6,12 @@
     <p>{{trip.returnsInThe}}</p>
     <a href="/trips/{{trip._id}}/edit" class="btn btn-primary">Edit</a>
     <a href="/profile/{{user._id}}" class="btn btn-primary">Your profile</a>
+    <a href="/users/{{trip.user}}/trips/{{trip._id}}/reviews/new" class="btn btn-primary">Leave a Review</a>
+  </div>
+  <div class="col-sm-4 offset-sm-4">
+
+
+   <p>{{comments}}</p>
+
   </div>
 </div>

@@ -44,31 +44,24 @@ module.exports = (app) => {
       });
     });
 
-    //LOGIN
-
-    app.post("/login", function(req, res, next) {
-      res.redirect('/');
-    })
 
 
-  //  LOGIN
-// app.post('/login', function(req, res, next) {
-//   User.findOne({ username: req.body.username }, "+password", function (err, user) {
-//     console.log(user);
-//     if (!user) { return res.status(401).send({ message: 'Wrong username or password' }) };
-//     user.comparePassword(req.body.password, function (err, isMatch) {
-//       console.log(!isMatch);
-//       if (!isMatch) {
-//         return res.status(401).send({ message: 'Wrong username or password' });
-//       }
-//
-//       const token = jwt.sign({ _id: user._id }, process.env.SECRET, { expiresIn: "60 days" });
-//       res.cookie('nToken', token, { maxAge: 900000, httpOnly: true });
-//
-//           res.redirect('/');
-//         });
-//       })
-//     });
+
+   // LOGIN
+   app.post('/login', function(req, res, next) {
+     User.findOne({ username: req.body.username }, "+password", function (err, user) {
+       if (!user) { return res.status(401).send({ message: 'Wrong username or password' }) };
+       user.comparePassword(req.body.password, function (err, isMatch) {
+         if (!isMatch) {
+           return res.status(401).send({ message: 'Wrong username or password' });
+         }
+
+         const token = jwt.sign({ _id: user._id }, process.env.SECRET, { expiresIn: "60 days" });
+         res.cookie('nToken', token, { maxAge: 900000, httpOnly: true });
+         res.redirect('/');
+       });
+     })
+   });
 
   //SHOW
   app.get('/profile', function (req, res) {

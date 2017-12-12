@@ -1,7 +1,7 @@
 <div class="row">
   <div class="col-sm-6 col-sm-offset-3">
     <legend>New Comment</legend>
-    <form method="POST" action="/comments">
+    <form method="POST" action="/trips/{{tripId}}/comments">
       {{> comments-form }}
     </form>
   </div>
