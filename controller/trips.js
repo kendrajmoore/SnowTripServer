@@ -8,21 +8,25 @@ module.exports = function(app) {
         //
         app.get('/trips', function (req, res) {
           Trip.find(function(err, trips) {
-            if (err) {
-              console.log(err)
-            }
-              res.send({ trips: trips });
+            if (req.header('Content-Type') == 'application/json') {
+              if (err) {
+                console.log(err)
+                return res.status(400).send({ message: "There was a problem showing trips."})
+              }
+              return res.send({ trips: trips });
 
                 // userLoggedIn: !!req.user });
+            }
           })
         })
-
-        // WEB INDEX
+          // WEB INDEX
         app.get('/', function (req, res) {
           const now = new Date();
           Trip.find({ departsOn: { $gt: now } }).sort('departsOn desc').exec(function(err, trips) {
             if (err) { return console.log(err) }
-             res.render('trips-index', { trips: trips, userLoggedIn: !!req.user });
+             res.render('trips-index', { trips: trips });
+
+               // , userLoggedIn: !!req.user });
           })
         })
 
