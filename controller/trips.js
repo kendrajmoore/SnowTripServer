@@ -1,6 +1,6 @@
 const Trip = require('../models/trip.js');
 const User = require('../models/user.js');
-const Comment = require('../models/comment')
+const Comment = require('../models/comment');
 
 module.exports = function(app) {
 
@@ -31,44 +31,15 @@ module.exports = function(app) {
           res.render('trips-new', { timesOfDay: Trip.timesOfDay(), userLoggedIn: !!req.user  });
         })
 
-        // app.get('/return', function (req, res) {
-        //   res.render('return', { timesOfDay: Trip.timesOfDay(), userLoggedIn: !!req.user  });
-        // })
-
-        // : Display trips
-        //trips#create
-          //departsOn, origin, destination => save tripA
-          //if returnsOn is present?
-            //make a tripB with origin: destination, desitnation: origin with departsOn: returnsOn, initialTrip = tripA, tripA.returnTrip = tripB
-          //else (one way trip)
-            //do nothing
-
         //CREATE()
-        app.post('/trips', function (req, res) {
+        app.post('/trips', function (req, res, err) {
           // Set trip to PST time
           req.body.departsOn = new Date(req.body.departsOn + " PST")
           req.body.returnsOn = new Date(req.body.returnsOn + " PST")
           // Set trip user to be current user
-          // req.body.user = req.user._id
+          req.body.user = req.user._id
 
           let trip = new Trip(req.body);
-          //
-          // tripA.save(req.body, function(err, trip) {
-          //   // If there is a return trip
-          //   if (req.body.returnsOn) {
-          //     req.body.returnsOn = new Date(req.body.returnsOn + " PST")
-          //     let tripB = new Trip({
-          //       origin: req.body.destination,
-          //       destination: req.body.origin,
-          //       departsOn: req.body.returnsOn,
-          //       initialTrip: tripA._id,
-          //       // user: req.user._id
-          //     })
-          //
-          //     tripB.save();
-          //
-          //     // set returnsOn on tripA
-          //     trip.returnsOn = req.body.returnsOn;
               trip.save()
 
               if (req.header('Content-Type') == 'application/json') {
@@ -132,3 +103,21 @@ module.exports = function(app) {
           })
         })
    }
+
+
+   //
+   // tripA.save(req.body, function(err, trip) {
+   //   // If there is a return trip
+   //   if (req.body.returnsOn) {
+   //     req.body.returnsOn = new Date(req.body.returnsOn + " PST")
+   //     let tripB = new Trip({
+   //       origin: req.body.destination,
+   //       destination: req.body.origin,
+   //       departsOn: req.body.returnsOn,
+   //       initialTrip: tripA._id,
+   //       // user: req.user._id
+   //     })
+   //
+   //     tripB.save();
+   //
+   //     // set returnsOn on tripA
