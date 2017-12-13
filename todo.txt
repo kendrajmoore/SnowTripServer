@@ -1,16 +1,8 @@
-sign up button in red on top right nav bar -button light blue -DONE
-
-add quotes-DONE
-
-all lowercase snow ride-DONE
+see trips without being logged in
 
 -Associate initial and return trip-DONE
   -Add a field trip to trip form
   -Create initial trip and if return present create two trips
-
-
-  require('locus');
-  eval(locus);
 
 -How to authicate with a phone Number-DONE
 -Make two Trips-DONE
@@ -21,6 +13,13 @@ all lowercase snow ride-DONE
  - set the cookie DONE
  - Encrypting passwords DONE
  - CheckAuth must check header: Authentication(Bearer) DONE
+
+
+ sign up button in red on top right nav bar -button light blue -DONE
+
+ add quotes-DONE
+
+ all lowercase snow ride-DONE
 
 
 Associate trips
@@ -168,3 +167,7 @@ Resource - photos, Photo, photo
 Model - Photo, photo.js
 Controler - photos.js
 Collection - photos
+
+
+require('locus');
+eval(locus);
