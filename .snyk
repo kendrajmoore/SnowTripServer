@@ -1,0 +1,13 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.13.3
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  'npm:hoek:20180212':
+    - twilio > jsonwebtoken > joi > hoek:
+        patched: '2019-04-23T18:23:53.210Z'
+    - twilio > jsonwebtoken > joi > topo > hoek:
+        patched: '2019-04-23T18:23:53.210Z'
+  'npm:uglify-js:20151024':
+    - jade > transformers > uglify-js:
+        patched: '2019-04-23T18:23:53.210Z'
