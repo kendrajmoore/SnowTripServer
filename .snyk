@@ -1,5 +1,5 @@
 # Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
-version: v1.13.3
+version: v1.13.5
 ignore: {}
 # patches apply the minimum changes required to fix a vulnerability
 patch:
@@ -11,3 +11,12 @@ patch:
   'npm:uglify-js:20151024':
     - jade > transformers > uglify-js:
         patched: '2019-04-23T18:23:53.210Z'
+  SNYK-JS-LODASH-450202:
+    - twilio > lodash:
+        patched: '2019-07-03T21:46:46.889Z'
+    - handlebars > async > lodash:
+        patched: '2019-07-03T21:46:46.889Z'
+    - mongoose > async > lodash:
+        patched: '2019-07-03T21:46:46.889Z'
+    - express-handlebars > handlebars > async > lodash:
+        patched: '2019-07-03T21:46:46.889Z'
