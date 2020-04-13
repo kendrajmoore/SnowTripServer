@@ -16,7 +16,7 @@
     "helper-dateformat": "^1.0.0",
     "http": "0.0.0",
     "jade": "^1.11.0",
-    "jquery": "^3.4.0",
+    "jquery": "^3.5.0",
     "jsonwebtoken": "^8.1.0",
     "method-override": "^2.3.10",
     "modules": "^0.4.0",
