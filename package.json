@@ -12,11 +12,11 @@
     "express": "^4.16.2",
     "express-handlebars": "^3.0.0",
     "flatpickr": "^4.0.7",
-    "handlebars": "^4.5.2",
+    "handlebars": "^4.6.0",
     "helper-dateformat": "^1.0.0",
     "http": "0.0.0",
     "jade": "^1.11.0",
-    "jquery": "^3.4.0",
+    "jquery": "^3.5.0",
     "jsonwebtoken": "^8.1.0",
     "method-override": "^2.3.10",
     "modules": "^0.4.0",
@@ -30,7 +30,7 @@
     "socket.io": "^2.0.4",
     "speakeasy": "^2.0.0",
     "twilio": "^3.16.0",
-    "snyk": "^1.153.0"
+    "snyk": "^1.316.1"
   },
   "devDependencies": {
     "locus": "^2.0.1"
