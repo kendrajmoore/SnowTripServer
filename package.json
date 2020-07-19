@@ -29,7 +29,7 @@
     "rc-calendar": "^9.1.12",
     "socket.io": "^2.0.4",
     "speakeasy": "^2.0.0",
-    "twilio": "^3.16.0",
+    "twilio": "^3.17.1",
     "snyk": "^1.316.1"
   },
   "devDependencies": {
