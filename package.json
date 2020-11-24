@@ -30,7 +30,7 @@
     "socket.io": "^2.0.4",
     "speakeasy": "^2.0.0",
     "twilio": "^3.17.1",
-    "snyk": "^1.316.1"
+    "snyk": "^1.425.4"
   },
   "devDependencies": {
     "locus": "^2.0.1"
