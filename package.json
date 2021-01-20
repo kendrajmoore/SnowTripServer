@@ -27,7 +27,7 @@
     "nstore": "^0.5.2",
     "pikaday": "^1.6.1",
     "rc-calendar": "^9.1.12",
-    "socket.io": "^2.0.4",
+    "socket.io": "^2.4.0",
     "speakeasy": "^2.0.0",
     "twilio": "^3.17.1",
     "snyk": "^1.316.1"
