@@ -12,7 +12,7 @@
     "express": "^4.16.2",
     "express-handlebars": "^3.0.0",
     "flatpickr": "^4.0.7",
-    "handlebars": "^4.6.0",
+    "handlebars": "^4.7.7",
     "helper-dateformat": "^1.0.0",
     "http": "0.0.0",
     "jade": "^1.11.0",
